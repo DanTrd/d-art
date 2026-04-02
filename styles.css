@@ -1128,3 +1128,24 @@ z-index: 1;
   height: 2px;
   background: #000;
 }
+
+@media (max-width: 768px) {
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    flex-direction: column;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    display: none;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .burger {
+    display: flex;
+  }
+}
