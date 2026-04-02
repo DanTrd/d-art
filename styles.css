@@ -61,6 +61,7 @@ h2 {
 .section-header {
   max-width: 42rem;
   margin-bottom: clamp(2rem, 4vw, 2.75rem);
+  min-width: 0;
 }
 
 .section-header h2 {
@@ -296,16 +297,10 @@ body.nav-open {
   left: 0;
   width: 100%;
   height: 100px;
-  background: linear-gradient(
-    135deg,
-    rgba(167, 139, 250, 0) 0%,
-    rgba(167, 139, 250, 0.5) 30%,
-    rgba(110, 231, 249, 0.32) 50%,
-    rgba(244, 114, 182, 0.58) 70%,
-    rgba(167, 139, 250, 0) 100%
-  );
-
-  filter: blur(6px);
+  /* Angled band hidden — keeps layout hooks without visible divider noise */
+  background: transparent;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .section-diagonal::before {
@@ -980,10 +975,37 @@ body.nav-open {
 .footer-links a {
   padding: 0.4rem 0.55rem;
   border-radius: 10px;
+  white-space: nowrap;
 }
 
 .footer-links a:hover {
   background: rgba(255, 255, 255, 0.85);
+}
+
+.footer-links__here {
+  padding: 0.4rem 0.55rem;
+  border-radius: 10px;
+  color: #64748b;
+  font-weight: 500;
+  cursor: default;
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .footer-links {
+    flex-wrap: wrap;
+    row-gap: 0.5rem;
+    column-gap: 0.65rem;
+    align-items: center;
+    justify-content: flex-start;
+    max-width: 100%;
+  }
 }
 
 [data-parallax] {
@@ -1242,6 +1264,30 @@ body.nav-open {
   margin-right: 0;
 }
 
+/* Hero lead — matches home `.description`: lighter weight, readable body */
+.page-hero__lead {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  max-width: 32rem;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  font-weight: 400;
+  line-height: 1.65;
+  letter-spacing: 0.01em;
+}
+
+.page-hero--split .page-hero__inner .page-hero__lead {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+@media (max-width: 900px) {
+  .page-hero--split .page-hero__inner .page-hero__lead {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
 .page-hero__arch {
   position: relative;
   min-height: min(48vh, 26rem);
@@ -1478,6 +1524,32 @@ body.nav-open {
   --accent: #f472b6;
 }
 
+/* Web dev: integrations — denser glass, stronger text contrast */
+.page-web .integration-build-card.glass {
+  background: linear-gradient(
+    165deg,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 0.78) 100%
+  );
+  border-color: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.page-web .integration-build-card__value {
+  color: #1e293b;
+  font-weight: 500;
+}
+
+.page-web .integration-build-card__log {
+  background: rgba(15, 23, 42, 0.08);
+  border-color: rgba(15, 23, 42, 0.1);
+}
+
+.page-web .integration-build-card__log-line {
+  color: #475569;
+}
+
 .integrations-build-grid.is-built .integration-build-card {
   opacity: 1;
   transform: translateY(0) scale(1);
@@ -1648,6 +1720,19 @@ body.nav-open {
   .integrations-build-grid {
     grid-template-columns: 1fr;
   }
+
+  .usecase-card,
+  .work-card {
+    padding: 1.25rem 1.15rem;
+  }
+
+  .section-header--center {
+    padding-inline: 0;
+  }
+
+  .section-lead--center {
+    overflow-wrap: anywhere;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1676,6 +1761,10 @@ body.nav-open {
   margin-right: auto;
 }
 
+.page-hero__subtitle.page-hero__lead {
+  max-width: 32rem;
+}
+
 .page-section {
   scroll-margin-top: 5rem;
 }
@@ -1685,6 +1774,7 @@ body.nav-open {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+  min-width: 0;
 }
 
 .section-header--center .section-lead {
@@ -1771,6 +1861,14 @@ body.nav-open {
   align-items: stretch;
 }
 
+.usecases-grid > * {
+  min-width: 0;
+}
+
+.work-grid > * {
+  min-width: 0;
+}
+
 .usecase-card {
   border-radius: var(--radius-lg);
   padding: 1.5rem 1.6rem;
@@ -1787,6 +1885,8 @@ body.nav-open {
   color: var(--muted);
   font-size: 0.98rem;
   line-height: 1.65;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .work-grid {
@@ -1815,6 +1915,8 @@ body.nav-open {
   font-size: 0.95rem;
   line-height: 1.6;
   flex-grow: 1;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .work-card__link {
@@ -1823,6 +1925,7 @@ body.nav-open {
   color: #475569;
   margin-top: auto;
   transition: color 0.2s ease;
+  overflow-wrap: anywhere;
 }
 
 .work-card__link:hover {
