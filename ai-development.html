@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Development | D-Art</title>
+    <meta
+      name="description"
+      content="AI development that delivers real ROI. AI agents, RAG systems, automation — built for production, not just demos."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="page-ai">
+    <div class="site-bg-orb orb-1" data-parallax></div>
+    <div class="site-bg-orb orb-2" data-parallax></div>
+
+    <header class="topbar glass" id="topbar">
+      <a href="index.html" class="brand">D-Art</a>
+      <button
+        type="button"
+        class="nav-toggle"
+        id="nav-toggle"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="site-nav"
+      >
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+      <nav class="nav" id="site-nav">
+        <a href="index.html">Home</a>
+        <a href="web-development.html">Web</a>
+        <a href="web3-development.html">Web3</a>
+        <a href="ai-development.html" aria-current="page">AI Development</a>
+        <a href="index.html#cta">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-hero page-hero--split page-hero--ai section page-section" id="hero">
+        <canvas class="ai-mesh-canvas" id="ai-mesh-canvas" aria-hidden="true"></canvas>
+        <div class="page-hero__bg" aria-hidden="true"></div>
+        <div class="page-hero__layout container">
+          <div class="page-hero__copy">
+            <div class="hero-content page-hero__inner">
+              <p class="kicker">AI Development</p>
+              <h1 class="page-hero__title">
+                Intelligence that <span class="animated-gradient-text">ships to prod</span>
+              </h1>
+              <p class="subtitle page-hero__subtitle">
+                Agents, RAG, and automation — architected like critical infrastructure, not weekend
+                demos.
+              </p>
+              <a class="btn btn-glass" href="#cta">Start a project</a>
+            </div>
+          </div>
+          <div class="page-hero__sign">
+            <div class="ai-sign-card glass" id="ai-sign-card">
+              <div class="ai-sign-card__top">
+                <span class="ai-sign-card__badge">Release approval</span>
+                <span class="ai-sign-card__net">prod · eu-west</span>
+              </div>
+              <p class="ai-sign-card__title">Authorize model deployment</p>
+              <p class="ai-sign-card__artifact">
+                artifact <span class="mono">rag-router@v2.4.1</span>
+              </p>
+              <div class="ai-sign-card__hash mono" id="ai-sign-digest">
+                0x7a3f8e2d…c91e4b6a
+              </div>
+              <ul class="ai-sign-card__meta">
+                <li>
+                  <span class="ai-sign-card__meta-label">Policy</span>
+                  <span class="mono">HITL · risk tier B</span>
+                </li>
+                <li>
+                  <span class="ai-sign-card__meta-label">Nonce</span>
+                  <span class="mono" id="ai-sign-nonce">#1842</span>
+                </li>
+              </ul>
+              <button type="button" class="ai-sign-card__btn btn btn-glass" id="ai-sign-btn">
+                <span class="ai-sign-card__btn-text">Sign &amp; deploy</span>
+                <span class="ai-sign-card__btn-spinner" aria-hidden="true"></span>
+              </button>
+              <div class="ai-sign-card__done" id="ai-sign-done" hidden>
+                <span class="ai-sign-card__check" aria-hidden="true">✓</span>
+                <p class="ai-sign-card__done-title">Committed on-chain</p>
+                <p class="ai-sign-card__tx mono" id="ai-sign-tx"></p>
+                <p class="ai-sign-card__latency">Indexed in <strong>1.2s</strong></p>
+                <button type="button" class="ai-sign-card__reset" id="ai-sign-reset">Sign again</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="ai-hash-river" aria-hidden="true">
+        <div class="ai-hash-river__fade ai-hash-river__fade--left"></div>
+        <div class="ai-hash-river__fade ai-hash-river__fade--right"></div>
+        <div class="ai-hash-river__row ai-hash-river__row--a">
+          <div class="ai-hash-river__track">
+            <span class="mono"
+              >tx 0x4a7b…e2 · batch_embed · ok · 12ms · qdrant</span
+            >
+            <span class="mono"
+              >tx 0x4a7b…e2 · batch_embed · ok · 12ms · qdrant</span
+            >
+          </div>
+        </div>
+        <div class="ai-hash-river__row ai-hash-river__row--b">
+          <div class="ai-hash-river__track">
+            <span class="mono"
+              >hash 0x9f2c…81 · eval_pass 98.4% · latency_p95 1.1s</span
+            >
+            <span class="mono"
+              >hash 0x9f2c…81 · eval_pass 98.4% · latency_p95 1.1s</span
+            >
+          </div>
+        </div>
+        <div class="ai-hash-river__row ai-hash-river__row--c">
+          <div class="ai-hash-river__track">
+            <span class="mono"
+              >commit 0xd41e…03 · router_weights · signed · HITL</span
+            >
+            <span class="mono"
+              >commit 0xd41e…03 · router_weights · signed · HITL</span
+            >
+          </div>
+        </div>
+        <div class="ai-hash-river__row ai-hash-river__row--d">
+          <div class="ai-hash-river__track">
+            <span class="mono"
+              >event inference_complete · trace_id 8b3… · cost 0.014 USD</span
+            >
+            <span class="mono"
+              >event inference_complete · trace_id 8b3… · cost 0.014 USD</span
+            >
+          </div>
+        </div>
+      </section>
+
+      <section class="marquee-section">
+        <div class="marquee-row" data-direction="right">
+          <div class="marquee-track">
+            <span>Agents • RAG • Automation • Fine-tuning • Production AI</span>
+            <span>Agents • RAG • Automation • Fine-tuning • Production AI</span>
+          </div>
+        </div>
+        <div class="marquee-row" data-direction="left">
+          <div class="marquee-track">
+            <span>Fast • Measurable • Secure • Human-in-the-loop</span>
+            <span>Fast • Measurable • Secure • Human-in-the-loop</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-diagonal page-section" id="what-we-build">
+        <div class="container">
+          <header class="section-header">
+            <h2>What we build</h2>
+            <p class="section-lead">
+              Systems that behave under load — clear boundaries, observability, and human gates where
+              risk lives.
+            </p>
+          </header>
+
+          <div class="ai-build-grid">
+            <article class="ai-feature-card glass hover-lift">
+              <span class="ai-feature-card__mark" aria-hidden="true"></span>
+              <h3>AI agents</h3>
+              <p class="ai-feature-card__desc">
+                Task routers, tool use, and review loops — built so failures are contained and
+                visible.
+              </p>
+            </article>
+            <article class="ai-feature-card glass hover-lift">
+              <span class="ai-feature-card__mark ai-feature-card__mark--b" aria-hidden="true"></span>
+              <h3>RAG systems</h3>
+              <p class="ai-feature-card__desc">
+                Chunking, retrieval, and citations your team can trust — not black-box answers.
+              </p>
+            </article>
+            <article class="ai-feature-card glass hover-lift">
+              <span class="ai-feature-card__mark ai-feature-card__mark--c" aria-hidden="true"></span>
+              <h3>Automation</h3>
+              <p class="ai-feature-card__desc">
+                CRM, chat, email, internal APIs — orchestrated flows with idempotency and logs.
+              </p>
+            </article>
+            <article class="ai-feature-card glass hover-lift">
+              <span class="ai-feature-card__mark ai-feature-card__mark--d" aria-hidden="true"></span>
+              <h3>Custom pipelines</h3>
+              <p class="ai-feature-card__desc">
+                Fine-tuning, eval harnesses, and deployment patterns matched to your data reality.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-split page-section" id="use-cases">
+        <div class="container">
+          <header class="section-header section-header--center">
+            <h2>Where AI pays off</h2>
+            <p class="section-lead section-lead--center">
+              Measurable outcomes — not slide decks.
+            </p>
+          </header>
+          <div class="usecases-grid">
+            <article class="usecase-card glass">
+              <h3>Support &amp; sales</h3>
+              <p>
+                Deflection, routing, and assist — fewer escalations, faster resolution, happier reps.
+              </p>
+            </article>
+            <article class="usecase-card glass">
+              <h3>Operations</h3>
+              <p>
+                Documents, reporting, and internal search — hours back every week for real work.
+              </p>
+            </article>
+            <article class="usecase-card glass">
+              <h3>Product</h3>
+              <p>
+                Search, recommendations, generation — features users feel, with guardrails you
+                control.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section page-section" id="results">
+        <div class="container">
+          <header class="section-header section-header--center">
+            <h2>Results we aim for</h2>
+            <p class="section-lead section-lead--center">
+              Benchmarks from production-style engagements — your mileage depends on scope.
+            </p>
+          </header>
+          <div class="speed-comparison glass ai-results-panel">
+            <div class="speed-row">
+              <span class="speed-label">Support load reduction</span>
+              <div class="speed-compare">
+                <span class="speed-before">before</span>
+                <span class="speed-arrow" aria-hidden="true">→</span>
+                <span class="speed-after"
+                  >−<span class="counter" data-target="65">0</span>% tickets</span
+                >
+              </div>
+            </div>
+            <div class="speed-row">
+              <span class="speed-label">Median response</span>
+              <div class="speed-compare">
+                <span class="speed-before">hours</span>
+                <span class="speed-arrow" aria-hidden="true">→</span>
+                <span class="speed-after"><span class="counter" data-target="30">0</span> seconds</span>
+              </div>
+            </div>
+            <div class="speed-row">
+              <span class="speed-label">Operational cost</span>
+              <div class="speed-compare">
+                <span class="speed-before">baseline</span>
+                <span class="speed-arrow" aria-hidden="true">→</span>
+                <span class="speed-after"
+                  >−<span class="counter" data-target="40">0</span>%</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-diagonal-reverse page-section" id="process">
+        <div class="container">
+          <header class="section-header section-header--center">
+            <h2>How we deliver</h2>
+            <p class="section-lead section-lead--center">
+              Short loops, honest scope — no endless “AI transformation” theatre.
+            </p>
+          </header>
+          <div class="process-flow glass">
+            <span class="process-flow__step">Audit</span>
+            <span class="process-flow__arrow" aria-hidden="true">→</span>
+            <span class="process-flow__step">Find leverage</span>
+            <span class="process-flow__arrow" aria-hidden="true">→</span>
+            <span class="process-flow__step">Prototype</span>
+            <span class="process-flow__arrow" aria-hidden="true">→</span>
+            <span class="process-flow__step">Production</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section page-section" id="stack">
+        <div class="container">
+          <header class="section-header">
+            <h2>Stack</h2>
+            <p class="section-lead">
+              Models and infra we combine — always chosen for your constraints, not our preferences.
+            </p>
+          </header>
+          <div class="stack-grid glass ai-stack-grid">
+            <div class="stack-item">GPT-4 · Claude · Gemini</div>
+            <div class="stack-item">LangChain · LlamaIndex</div>
+            <div class="stack-item">Pinecone · Qdrant · Chroma</div>
+            <div class="stack-item">Fine-tuning · open weights</div>
+            <div class="stack-item">Slack · TG · CRM APIs</div>
+            <div class="stack-item">Agentic workflows · evals</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-final page-section" id="cta">
+        <div class="container final-cta glass web3-final-cta">
+          <h2>Ready to ship AI that holds up?</h2>
+          <p class="final-cta__lead">
+            Tell us what breaks first — we’ll reply with a concrete next step within 48 hours.
+          </p>
+          <a class="btn btn-glass" href="mailto:hello@d-art.dev">Start a project</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <span>© 2026 D-Art</span>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="web-development.html">Web</a>
+          <a href="web3-development.html">Web3</a>
+          <a href="ai-development.html">AI</a>
+          <a href="mailto:hello@d-art.dev">Contact</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -11,36 +11,56 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <body class="page-web">
     <div class="site-bg-orb orb-1" data-parallax></div>
     <div class="site-bg-orb orb-2" data-parallax></div>
 
-    <header class="topbar glass">
+    <header class="topbar glass" id="topbar">
       <a href="index.html" class="brand">D-Art</a>
-      <nav class="nav">
+      <button
+        type="button"
+        class="nav-toggle"
+        id="nav-toggle"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="site-nav"
+      >
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+      <nav class="nav" id="site-nav">
         <a href="index.html">Home</a>
         <a href="web-development.html" aria-current="page">Web</a>
-        <a href="index.html#services">Services</a>
+        <a href="web3-development.html">Web3</a>
+        <a href="ai-development.html">AI Development</a>
         <a href="index.html#cta">Contact</a>
       </nav>
     </header>
 
     <main>
-      <section class="page-hero section" id="hero">
+      <section class="page-hero page-hero--split section" id="hero">
         <div class="page-hero__bg" aria-hidden="true"></div>
-        <div class="hero-content page-hero__inner">
-          <p class="kicker">Web development</p>
-          <h1 class="page-hero__title">Web development that actually drives results
-          </h1>
-          <p class="subtitle page-hero__subtitle">
-            From landing pages to complex platforms - built for speed, scale and conversion
-          </p>
-          <a class="btn btn-glass" href="#cta">Start a project</a>
+        <div class="page-hero__layout container">
+          <div class="page-hero__copy">
+            <div class="hero-content page-hero__inner">
+              <p class="kicker">Web development</p>
+              <h1 class="page-hero__title">Web development that actually drives results
+              </h1>
+              <p class="subtitle page-hero__subtitle">
+                From landing pages to complex platforms - built for speed, scale and conversion
+              </p>
+              <a class="btn btn-glass" href="#cta">Start a project</a>
+            </div>
+          </div>
+          <div class="page-hero__arch" aria-hidden="true">
+            <canvas class="web-arch-canvas" id="web-arch-canvas"></canvas>
+          </div>
         </div>
       </section>
 
@@ -169,6 +189,108 @@
         </div>
       </section>
 
+      <section class="section section-split page-section" id="web-performance">
+        <div class="container">
+          <header class="section-header section-header--center">
+            <h2>Speed you can measure</h2>
+            <p class="section-lead section-lead--center">
+              Production-grade performance — Core Web Vitals targets we ship to by default
+            </p>
+          </header>
+          <div class="web-perf-showcase glass">
+            <div class="web-speedometer" id="web-speedometer">
+              <svg
+                class="web-speedometer__svg"
+                viewBox="0 0 200 118"
+                role="img"
+                aria-labelledby="speedometer-title"
+              >
+                <title id="speedometer-title">Performance score gauge</title>
+                <defs>
+                  <linearGradient id="webGaugeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#f472b6" />
+                    <stop offset="50%" stop-color="#a78bfa" />
+                    <stop offset="100%" stop-color="#6ee7f9" />
+                  </linearGradient>
+                </defs>
+                <path
+                  class="web-speedometer__track"
+                  d="M 24 100 A 76 76 0 0 0 176 100"
+                  fill="none"
+                  stroke="rgba(15,23,42,0.08)"
+                  stroke-width="10"
+                  stroke-linecap="round"
+                />
+                <path
+                  class="web-speedometer__fill"
+                  id="web-speedometer-arc"
+                  d="M 24 100 A 76 76 0 0 0 176 100"
+                  fill="none"
+                  stroke="url(#webGaugeGrad)"
+                  stroke-width="10"
+                  stroke-linecap="round"
+                  pathLength="100"
+                  stroke-dasharray="100"
+                  stroke-dashoffset="100"
+                />
+                <g class="web-speedometer__needle-group" id="web-speedometer-needle-group" transform="translate(100,100)">
+                  <line
+                    class="web-speedometer__needle"
+                    id="web-speedometer-needle"
+                    x1="0"
+                    y1="0"
+                    x2="62"
+                    y2="0"
+                    stroke="#0f172a"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                  />
+                  <circle cx="0" cy="0" r="5" fill="#0f172a" />
+                  <circle cx="0" cy="0" r="2" fill="#6ee7f9" opacity="0.9" />
+                </g>
+              </svg>
+              <div class="web-speedometer__readout">
+                <span class="web-speedometer__value" id="speedometer-value">0</span>
+                <span class="web-speedometer__slash">/</span>
+                <span class="web-speedometer__max">100</span>
+              </div>
+              <p class="web-speedometer__caption">Lighthouse-style performance score</p>
+            </div>
+            <div class="web-perf-metrics">
+              <div class="web-perf-metric" data-metric="lcp">
+                <div class="web-perf-metric__head">
+                  <span class="web-perf-metric__name">LCP</span>
+                  <span class="web-perf-metric__tag">Largest Contentful Paint</span>
+                </div>
+                <div class="web-perf-metric__bar">
+                  <span class="web-perf-metric__fill" style="--fill: 0.92"></span>
+                </div>
+                <span class="web-perf-metric__target">&lt; 2.5s target</span>
+              </div>
+              <div class="web-perf-metric" data-metric="inp">
+                <div class="web-perf-metric__head">
+                  <span class="web-perf-metric__name">INP</span>
+                  <span class="web-perf-metric__tag">Interaction to Next Paint</span>
+                </div>
+                <div class="web-perf-metric__bar">
+                  <span class="web-perf-metric__fill" style="--fill: 0.88"></span>
+                </div>
+                <span class="web-perf-metric__target">&lt; 200ms target</span>
+              </div>
+              <div class="web-perf-metric" data-metric="cls">
+                <div class="web-perf-metric__head">
+                  <span class="web-perf-metric__name">CLS</span>
+                  <span class="web-perf-metric__tag">Cumulative Layout Shift</span>
+                </div>
+                <div class="web-perf-metric__bar">
+                  <span class="web-perf-metric__fill" style="--fill: 0.95"></span>
+                </div>
+                <span class="web-perf-metric__target">&lt; 0.1 layout stable</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section class="section section-split page-section" id="use-cases">
         <div class="container">
@@ -244,26 +366,88 @@ Reliable websites and systems that support sales and operations
           <header class="section-header">
             <h2>Integrations</h2>
             <p class="section-lead">
-              We integrate your product with the tools you already use            </p>
+              We integrate your product with the tools you already use — wired like production, not
+              duct tape
+            </p>
           </header>
-          <ul class="integrations-list glass">
-            <li>
-              <span class="integrations-list__label">CRM</span>
-              <span class="integrations-list__value">HubSpot, Salesforce, Pipedrive, custom APIs</span>
-            </li>
-            <li>
-              <span class="integrations-list__label">Payments</span>
-              <span class="integrations-list__value">Stripe, Paddle, invoicing &amp; subscription flows</span>
-            </li>
-            <li>
-              <span class="integrations-list__label">APIs</span>
-              <span class="integrations-list__value">REST, GraphQL, webhooks, partner integrations</span>
-            </li>
-            <li>
-              <span class="integrations-list__label">Analytics</span>
-              <span class="integrations-list__value">GA4, Mixpanel, Plausible, server-side events</span>
-            </li>
-          </ul>
+          <div class="integrations-build-grid" id="integrations-build">
+            <article
+              class="integration-build-card glass integration-build-card--crm"
+              data-build-index="0"
+              style="--build-i: 0"
+            >
+              <div class="integration-build-card__scan" aria-hidden="true"></div>
+              <div class="integration-build-card__header">
+                <span class="integration-build-card__icon" aria-hidden="true"></span>
+                <span class="integration-build-card__label">CRM</span>
+                <span class="integration-build-card__status">linked</span>
+              </div>
+              <p class="integration-build-card__value">
+                HubSpot, Salesforce, Pipedrive, custom APIs
+              </p>
+              <p class="integration-build-card__log">
+                <span class="integration-build-card__log-line">→ sync.contacts.schema v2</span>
+                <span class="integration-build-card__log-line">→ webhook /crm/events</span>
+              </p>
+            </article>
+            <article
+              class="integration-build-card glass integration-build-card--pay"
+              data-build-index="1"
+              style="--build-i: 1"
+            >
+              <div class="integration-build-card__scan" aria-hidden="true"></div>
+              <div class="integration-build-card__header">
+                <span class="integration-build-card__icon" aria-hidden="true"></span>
+                <span class="integration-build-card__label">Payments</span>
+                <span class="integration-build-card__status">linked</span>
+              </div>
+              <p class="integration-build-card__value">
+                Stripe, Paddle, invoicing &amp; subscription flows
+              </p>
+              <p class="integration-build-card__log">
+                <span class="integration-build-card__log-line">→ billing.portal.session</span>
+                <span class="integration-build-card__log-line">→ invoice.paid ✓</span>
+              </p>
+            </article>
+            <article
+              class="integration-build-card glass integration-build-card--api"
+              data-build-index="2"
+              style="--build-i: 2"
+            >
+              <div class="integration-build-card__scan" aria-hidden="true"></div>
+              <div class="integration-build-card__header">
+                <span class="integration-build-card__icon" aria-hidden="true"></span>
+                <span class="integration-build-card__label">APIs</span>
+                <span class="integration-build-card__status">linked</span>
+              </div>
+              <p class="integration-build-card__value">
+                REST, GraphQL, webhooks, partner integrations
+              </p>
+              <p class="integration-build-card__log">
+                <span class="integration-build-card__log-line">→ openapi 3.1 bundle</span>
+                <span class="integration-build-card__log-line">→ idempotency-key: *</span>
+              </p>
+            </article>
+            <article
+              class="integration-build-card glass integration-build-card--analytics"
+              data-build-index="3"
+              style="--build-i: 3"
+            >
+              <div class="integration-build-card__scan" aria-hidden="true"></div>
+              <div class="integration-build-card__header">
+                <span class="integration-build-card__icon" aria-hidden="true"></span>
+                <span class="integration-build-card__label">Analytics</span>
+                <span class="integration-build-card__status">linked</span>
+              </div>
+              <p class="integration-build-card__value">
+                GA4, Mixpanel, Plausible, server-side events
+              </p>
+              <p class="integration-build-card__log">
+                <span class="integration-build-card__log-line">→ ssr events flush</span>
+                <span class="integration-build-card__log-line">→ consent mode strict</span>
+              </p>
+            </article>
+          </div>
         </div>
       </section>
 
@@ -320,7 +504,9 @@ Reliable websites and systems that support sales and operations
         <span>© 2026 D-Art</span>
         <div class="footer-links">
           <a href="index.html">Home</a>
-          <a href="web-development.html">Web development</a>
+          <a href="web-development.html">Web</a>
+          <a href="web3-development.html">Web3</a>
+          <a href="ai-development.html">AI</a>
           <a href="mailto:hello@d-art.dev">Contact</a>
         </div>
       </div>

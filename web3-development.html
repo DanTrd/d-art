@@ -1,114 +1,401 @@
 <!doctype html>
-<html lang="ru">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Web3 Development | D-Art</title>
     <meta
       name="description"
-      content="Web3 development with production-ready architecture: DApps, smart contracts, trading systems, DeFi tools."
+      content="Web3 development: smart contracts, tokens, DeFi and DApps — decentralized by design, production-ready by default."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <body class="page-web3">
     <div class="site-bg-orb orb-1" data-parallax></div>
     <div class="site-bg-orb orb-2" data-parallax></div>
 
-    <header class="topbar glass">
+    <header class="topbar glass" id="topbar">
       <a href="index.html" class="brand">D-Art</a>
-      <nav class="nav">
+      <button
+        type="button"
+        class="nav-toggle"
+        id="nav-toggle"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="site-nav"
+      >
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+      <nav class="nav" id="site-nav">
         <a href="index.html">Home</a>
         <a href="web-development.html">Web</a>
         <a href="web3-development.html" aria-current="page">Web3</a>
-        <a href="index.html#services">Services</a>
+        <a href="ai-development.html">AI Development</a>
         <a href="index.html#cta">Contact</a>
       </nav>
     </header>
 
     <main>
-      <section class="page-hero section page-section" id="hero">
+      <section class="page-hero page-hero--split page-hero--web3 section page-section" id="hero">
+        <canvas class="web3-chain-canvas" id="web3-chain-canvas" aria-hidden="true"></canvas>
         <div class="page-hero__bg" aria-hidden="true"></div>
-        <div class="hero-content page-hero__inner">
-          <p class="kicker">Web3 development</p>
-          <h1 class="page-hero__title">
-            Web3 development with production-ready architecture
-          </h1>
-          <p class="subtitle page-hero__subtitle">
-            DApps, smart contracts and trading systems — built for reliability and scale
-          </p>
-          <a class="btn btn-glass" href="index.html#cta">Start a project</a>
+        <div class="page-hero__layout container">
+          <div class="page-hero__copy">
+            <div class="hero-content page-hero__inner">
+              <p class="kicker">Web3 development</p>
+              <h1 class="page-hero__title">
+                Decentralized products that <span class="animated-gradient-text">hold up on-chain</span>
+              </h1>
+              <p class="subtitle page-hero__subtitle">
+                Smart contracts, tokens, and DApps — engineered for security, clarity, and real
+                liquidity — not hype cycles.
+              </p>
+              <a class="btn btn-glass" href="#cta">Start a project</a>
+            </div>
+          </div>
+          <div class="page-hero__web3-card">
+            <div class="web3-hero-panel glass">
+              <div class="web3-hero-panel__head">
+                <span class="web3-hero-panel__live"></span>
+                <span class="web3-hero-panel__title">Ethereum · mainnet</span>
+              </div>
+              <div class="web3-hero-panel__stats">
+                <div>
+                  <span class="web3-hero-panel__label">Block</span>
+                  <span class="mono web3-hero-panel__value" id="web3-hero-block">19,284,102</span>
+                </div>
+                <div>
+                  <span class="web3-hero-panel__label">Gas</span>
+                  <span class="mono web3-hero-panel__value">24 gwei</span>
+                </div>
+              </div>
+              <div class="web3-hero-panel__spark" aria-hidden="true">
+                <span></span><span></span><span></span><span></span><span></span><span></span
+                ><span></span><span></span>
+              </div>
+              <p class="web3-hero-panel__hint mono">synced · public RPC · demo stats</p>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section class="section section-diagonal page-section" id="what-we-build">
+      <section class="web3-tx-river" aria-hidden="true">
+        <div class="web3-tx-river__fade web3-tx-river__fade--left"></div>
+        <div class="web3-tx-river__fade web3-tx-river__fade--right"></div>
+        <div class="web3-tx-river__row">
+          <div class="web3-tx-river__track">
+            <span class="mono"
+              >confirmed 0x7f2a…b91 · ERC-20 transfer · block 19,284,102 · 12 confirmations</span
+            >
+            <span class="mono"
+              >confirmed 0x7f2a…b91 · ERC-20 transfer · block 19,284,102 · 12 confirmations</span
+            >
+          </div>
+        </div>
+        <div class="web3-tx-river__row web3-tx-river__row--b">
+          <div class="web3-tx-river__track">
+            <span class="mono"
+              >contract 0x4d…e8 · verified · solidity 0.8.23 · optimizer 200 runs</span
+            >
+            <span class="mono"
+              >contract 0x4d…e8 · verified · solidity 0.8.23 · optimizer 200 runs</span
+            >
+          </div>
+        </div>
+      </section>
+
+      <section class="web3-crypto-strip section section--compact">
         <div class="container">
-          <header class="section-header">
-            <h2>What we build</h2>
-            <p class="section-lead">
-              Production-grade Web3 delivery: secure foundations, clean architecture, and
-              launch-ready execution.
+          <p class="web3-crypto-strip__label">Chains &amp; assets we ship with</p>
+          <ul class="web3-crypto-strip__list" role="list">
+            <li>
+              <span class="web3-crypto-icon" title="Bitcoin">
+                <svg viewBox="0 0 32 32" aria-hidden="true" class="web3-crypto-icon__svg">
+                  <circle cx="16" cy="16" r="15" fill="#F7931A" />
+                  <text
+                    x="16"
+                    y="21"
+                    text-anchor="middle"
+                    fill="#fff"
+                    font-size="14"
+                    font-weight="800"
+                    font-family="Inter,sans-serif"
+                  >
+                    ₿
+                  </text>
+                </svg>
+                <span class="web3-crypto-icon__name">Bitcoin</span>
+              </span>
+            </li>
+            <li>
+              <span class="web3-crypto-icon" title="Ethereum">
+                <svg viewBox="0 0 32 32" aria-hidden="true" class="web3-crypto-icon__svg">
+                  <circle cx="16" cy="16" r="15" fill="#627EEA" />
+                  <path fill="#fff" d="M16 6l7.5 12.5L16 17l-7.5 1.5L16 6z" opacity=".95" />
+                  <path fill="#C1CCF7" d="M16 17l7.5 4.5L16 26l-7.5-4.5L16 17z" />
+                  <path fill="#fff" d="M16 17V6l7.5 12.5L16 17z" opacity=".45" />
+                </svg>
+                <span class="web3-crypto-icon__name">Ethereum</span>
+              </span>
+            </li>
+            <li>
+              <span class="web3-crypto-icon" title="Solana">
+                <svg viewBox="0 0 32 32" aria-hidden="true" class="web3-crypto-icon__svg">
+                  <defs>
+                    <linearGradient id="solG" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#9945FF" />
+                      <stop offset="100%" stop-color="#14F195" />
+                    </linearGradient>
+                  </defs>
+                  <circle cx="16" cy="16" r="15" fill="url(#solG)" />
+                  <path
+                    fill="#fff"
+                    d="M9 20.5l2.2-2.2h11.4l-2.1 2.2H9zm0-4.5l2.2-2.2h11.4l-2.1 2.2H9zm11.8-4.5L23 9.5H11.6l-2.1 2.2h11.3z"
+                  />
+                </svg>
+                <span class="web3-crypto-icon__name">Solana</span>
+              </span>
+            </li>
+            <li>
+              <span class="web3-crypto-icon" title="Arbitrum">
+                <svg viewBox="0 0 32 32" aria-hidden="true" class="web3-crypto-icon__svg">
+                  <circle cx="16" cy="16" r="15" fill="#28A0F0" />
+                  <path
+                    fill="#fff"
+                    d="M16 8l6 10h-3.2l-1.2-2h-3.2L16 8zm-4.8 12h3.2l1.6-2.5h3.2L16 24l-4.8-4z"
+                  />
+                </svg>
+                <span class="web3-crypto-icon__name">Arbitrum</span>
+              </span>
+            </li>
+            <li>
+              <span class="web3-crypto-icon" title="Base">
+                <svg viewBox="0 0 32 32" aria-hidden="true" class="web3-crypto-icon__svg">
+                  <circle cx="16" cy="16" r="15" fill="#0052FF" />
+                  <path
+                    fill="#fff"
+                    d="M16 22c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z"
+                  />
+                </svg>
+                <span class="web3-crypto-icon__name">Base</span>
+              </span>
+            </li>
+            <li>
+              <span class="web3-crypto-icon" title="USDC">
+                <svg viewBox="0 0 32 32" aria-hidden="true" class="web3-crypto-icon__svg">
+                  <circle cx="16" cy="16" r="15" fill="#2775CA" />
+                  <text
+                    x="16"
+                    y="21"
+                    text-anchor="middle"
+                    fill="#fff"
+                    font-size="15"
+                    font-weight="800"
+                    font-family="Inter,sans-serif"
+                  >
+                    $
+                  </text>
+                </svg>
+                <span class="web3-crypto-icon__name">USDC</span>
+              </span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="marquee-section">
+        <div class="marquee-row" data-direction="right">
+          <div class="marquee-track">
+            <span>Solidity · ERC-20 · ERC-721 · Multisig · Indexers · Oracles</span>
+            <span>Solidity · ERC-20 · ERC-721 · Multisig · Indexers · Oracles</span>
+          </div>
+        </div>
+        <div class="marquee-row" data-direction="left">
+          <div class="marquee-track">
+            <span>Decentralized · Verifiable · Composable · Auditable</span>
+            <span>Decentralized · Verifiable · Composable · Auditable</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-diagonal page-section" id="decentralization">
+        <div class="container">
+          <header class="section-header section-header--center">
+            <h2>Why decentralization matters</h2>
+            <p class="section-lead section-lead--center">
+              Rules live in code — not in someone’s admin panel. Ownership and execution stay
+              transparent and censorship-resistant by architecture.
             </p>
           </header>
-
-          <div class="web3-build-grid">
-            <article class="web3-card glass hover-lift">
-              <h3>DApps</h3>
-              <p class="web3-card__desc">
-                User-facing decentralized apps with wallet integration.
+          <div class="web3-pillar-grid">
+            <article class="web3-pillar glass">
+              <span class="web3-pillar__icon" aria-hidden="true">⬡</span>
+              <h3>No single point of control</h3>
+              <p>
+                Protocol logic runs on-chain; upgrades and permissions are explicit — multisig,
+                timelocks, or governance — not hidden switches.
               </p>
             </article>
-
-            <article class="web3-card glass hover-lift">
-              <h3>Smart Contracts</h3>
-              <p class="web3-card__desc">
-                Secure, optimized contracts with audit-ready structure.
+            <article class="web3-pillar glass">
+              <span class="web3-pillar__icon" aria-hidden="true">◎</span>
+              <h3>Sovereign ownership</h3>
+              <p>
+                Users hold keys and assets. Tokens and NFTs are portable — your community isn’t
+                locked into one app or database.
               </p>
             </article>
-
-            <article class="web3-card glass hover-lift">
-              <h3>Trading Systems</h3>
-              <p class="web3-card__desc">
-                Bots, strategies and execution systems for measurable performance.
-              </p>
-            </article>
-
-            <article class="web3-card glass hover-lift">
-              <h3>DeFi Tools</h3>
-              <p class="web3-card__desc">
-                Custom logic for staking, liquidity and protocol workflows.
+            <article class="web3-pillar glass">
+              <span class="web3-pillar__icon" aria-hidden="true">✓</span>
+              <h3>Verifiable execution</h3>
+              <p>
+                Balances, swaps, and permissions are observable on-chain. Integrations can trust
+                math instead of opaque APIs.
               </p>
             </article>
           </div>
         </div>
       </section>
 
-      <section class="section section-split page-section" id="use-cases">
+      <section class="section section-split page-section" id="what-we-build">
+        <div class="container">
+          <header class="section-header">
+            <h2>What we build</h2>
+            <p class="section-lead">
+              From token launches to contract systems — structured for audits, upgrades, and real
+              usage.
+            </p>
+          </header>
+
+          <div class="web3-build-grid">
+            <article class="web3-card web3-card--accent glass hover-lift">
+              <div class="web3-card__icon-wrap" aria-hidden="true">
+                <svg class="web3-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                    d="M4 7h16M4 12h10M4 17h6"
+                  />
+                  <circle cx="18" cy="12" r="3" stroke-width="1.75" />
+                </svg>
+              </div>
+              <h3>Smart contracts</h3>
+              <p class="web3-card__desc">
+                Solidity modules with clear boundaries — upgrade paths, access control, and
+                event-rich interfaces for indexers and frontends.
+              </p>
+            </article>
+
+            <article class="web3-card web3-card--accent-b glass hover-lift">
+              <div class="web3-card__icon-wrap" aria-hidden="true">
+                <svg class="web3-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <circle cx="12" cy="12" r="9" stroke-width="1.75" />
+                  <path stroke-width="1.75" d="M12 7v10M8 10h8M8 14h8" />
+                </svg>
+              </div>
+              <h3>Tokens &amp; economics</h3>
+              <p class="web3-card__desc">
+                ERC-20 / ERC-721 (and extensions), vesting, staking, and emissions — designed so
+                incentives match long-term product goals.
+              </p>
+            </article>
+
+            <article class="web3-card web3-card--accent-c glass hover-lift">
+              <div class="web3-card__icon-wrap" aria-hidden="true">
+                <svg class="web3-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <rect x="4" y="4" width="16" height="16" rx="2" stroke-width="1.75" />
+                  <path stroke-width="1.75" d="M9 9h6v6H9z" />
+                </svg>
+              </div>
+              <h3>DApps &amp; wallets</h3>
+              <p class="web3-card__desc">
+                React/Next frontends with wallet connect, safe signing flows, and resilient RPC
+                handling — mobile-first where it matters.
+              </p>
+            </article>
+
+            <article class="web3-card web3-card--accent-d glass hover-lift">
+              <div class="web3-card__icon-wrap" aria-hidden="true">
+                <svg class="web3-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                    d="M4 18h16M6 14l4-4 4 4 4-6"
+                  />
+                </svg>
+              </div>
+              <h3>Trading &amp; DeFi</h3>
+              <p class="web3-card__desc">
+                Execution bots, routing integrations, and protocol adapters — with monitoring,
+                slippage controls, and operational guardrails.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-diagonal-reverse page-section" id="chart">
         <div class="container">
           <header class="section-header section-header--center">
-            <h2>Use cases</h2>
+            <h2>Markets move fast — your stack should too</h2>
             <p class="section-lead section-lead--center">
-              Built for teams who want Web3 to be dependable — not experimental.
+              We design systems that stay observable under load: latency, reorgs, and liquidity —
+              not just “it compiled”.
+            </p>
+          </header>
+          <div class="web3-chart-card glass">
+            <div class="web3-chart-card__head">
+              <span class="web3-chart-card__pair mono">ETH / USD · demo</span>
+              <span class="web3-chart-card__badge">24h</span>
+            </div>
+            <div class="web3-chart-card__canvas-wrap">
+              <canvas id="web3-chart-canvas" aria-label="Illustrative price activity chart"></canvas>
+            </div>
+            <p class="web3-chart-card__footnote mono">
+              Illustrative series — not financial advice or live market data.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section page-section" id="use-cases">
+        <div class="container">
+          <header class="section-header section-header--center">
+            <h2>Who it’s for</h2>
+            <p class="section-lead section-lead--center">
+              Teams that need Web3 to behave like infrastructure — predictable releases and clear
+              ownership.
             </p>
           </header>
 
           <div class="usecases-grid">
             <article class="usecase-card glass">
               <h3>Startups</h3>
-              <p>Launch token or product fast with smart sequencing and clean delivery.</p>
+              <p>
+                Token launch, protocol MVP, or NFT drop — tight scope, clean contracts, and a path to
+                audit and scale.
+              </p>
             </article>
             <article class="usecase-card glass">
-              <h3>Projects</h3>
-              <p>Scale existing Web3 infrastructure with maintainability and reliability.</p>
+              <h3>Protocols</h3>
+              <p>
+                New modules, governance hooks, and subgraph-friendly events — maintainable across
+                upgrades.
+              </p>
             </article>
             <article class="usecase-card glass">
-              <h3>Traders</h3>
-              <p>Automate strategies and execution with consistent interfaces and controls.</p>
+              <h3>Traders &amp; desks</h3>
+              <p>
+                Automation and integrations with explicit risk limits — logs you can actually
+                post-mortem.
+              </p>
             </article>
           </div>
         </div>
@@ -119,15 +406,17 @@
           <header class="section-header">
             <h2>Stack</h2>
             <p class="section-lead">
-              The tools we use to ship securely and integrate smoothly with your ecosystem.
+              Tooling we combine — always matched to your chain, threat model, and release cadence.
             </p>
           </header>
 
-          <div class="stack-grid glass">
-            <div class="stack-item">Solidity</div>
-            <div class="stack-item">EVM chains</div>
-            <div class="stack-item">Web3.js / ethers</div>
-            <div class="stack-item">APIs and data providers</div>
+          <div class="stack-grid glass web3-stack-wide">
+            <div class="stack-item">Solidity · Foundry · Hardhat</div>
+            <div class="stack-item">EVM · L2s · cross-chain messaging</div>
+            <div class="stack-item">ethers.js · viem · Web3Auth</div>
+            <div class="stack-item">The Graph · subsquid · custom indexers</div>
+            <div class="stack-item">OpenZeppelin · audits · formal review</div>
+            <div class="stack-item">Safe · multisig · timelocks</div>
           </div>
         </div>
       </section>
@@ -137,32 +426,32 @@
           <header class="section-header section-header--center">
             <h2>Process</h2>
             <p class="section-lead section-lead--center">
-              Idea → Architecture → Development → Testing → Launch
+              Specs you can reason about — then ship, test, and monitor.
             </p>
           </header>
 
           <div class="process-flow glass">
-            <span class="process-flow__step">Idea</span>
+            <span class="process-flow__step">Discovery</span>
             <span class="process-flow__arrow" aria-hidden="true">→</span>
             <span class="process-flow__step">Architecture</span>
             <span class="process-flow__arrow" aria-hidden="true">→</span>
-            <span class="process-flow__step">Development</span>
+            <span class="process-flow__step">Contracts</span>
             <span class="process-flow__arrow" aria-hidden="true">→</span>
-            <span class="process-flow__step">Testing</span>
+            <span class="process-flow__step">Testnet</span>
             <span class="process-flow__arrow" aria-hidden="true">→</span>
-            <span class="process-flow__step">Launch</span>
+            <span class="process-flow__step">Mainnet</span>
           </div>
         </div>
       </section>
 
       <section class="section section-final page-section" id="cta">
         <div class="container final-cta glass web3-final-cta">
-          <h2>Let’s build your Web3 product</h2>
+          <h2>Let’s ship your Web3 product</h2>
           <p class="final-cta__lead">
-            Send your goal and constraints — we’ll propose an architecture and timeline you can
-            trust.
+            Share the chain, the token model, and the deadline — we’ll respond with architecture and
+            milestones you can rely on.
           </p>
-          <a class="btn btn-glass" href="index.html#cta">Start a project</a>
+          <a class="btn btn-glass" href="mailto:hello@d-art.dev">Start a project</a>
         </div>
       </section>
     </main>
@@ -172,7 +461,9 @@
         <span>© 2026 D-Art</span>
         <div class="footer-links">
           <a href="index.html">Home</a>
-          <a href="web-development.html">Web development</a>
+          <a href="web-development.html">Web</a>
+          <a href="web3-development.html">Web3</a>
+          <a href="ai-development.html">AI</a>
           <a href="mailto:hello@d-art.dev">Contact</a>
         </div>
       </div>
@@ -181,4 +472,3 @@
     <script src="script.js"></script>
   </body>
 </html>
-
