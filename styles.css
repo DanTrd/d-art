@@ -1149,3 +1149,29 @@ z-index: 1;
     display: flex;
   }
 }
+.footer {
+  padding: 80px 40px 40px;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-bottom {
+  margin-top: 40px;
+  font-size: 14px;
+  opacity: 0.6;
+}
+@media (max-width: 768px) {
+  .footer-inner {
+    flex-direction: column;
+  }
+}
