@@ -1087,3 +1087,44 @@ z-index: 1;
     grid-template-columns: 1fr;
   }
 }
+
+.nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.7);
+  z-index: 100;
+}
+
+.nav-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* burger */
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.burger span {
+  width: 20px;
+  height: 2px;
+  background: #000;
+}
