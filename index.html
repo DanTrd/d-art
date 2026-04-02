@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
@@ -20,34 +20,27 @@
     <div class="site-bg-orb orb-1" data-parallax></div>
     <div class="site-bg-orb orb-2" data-parallax></div>
 
-    <header class="topbar glass">
+    <header class="topbar glass" id="topbar">
       <a href="#hero" class="brand">D-Art</a>
-     <nav class="nav">
-  <div class="nav-inner">
-    
-    <a href="/d-art/" class="logo">D-Art</a>
-
-    <div class="nav-links" id="navLinks">
-      <a href="/d-art/web/">Web</a>
-      <a href="/d-art/web3/">Web3</a>
-      <a href="/d-art/ai/">AI</a>
-      <a href="/d-art/contact/">Contact</a>
-    </div>
-
-    <div class="nav-right">
-      <div class="lang-switch">
-        <a href="/d-art/">EN</a>
-        <a href="/d-art/ru/">RU</a>
-      </div>
-
-      <div class="burger" id="burger">
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-
-  </div>
-</nav>
+      <button
+        type="button"
+        class="nav-toggle"
+        id="nav-toggle"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="site-nav"
+      >
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+      <nav class="nav" id="site-nav">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="web-development.html">Web</a>
+        <a href="web3-development.html">Web3</a>
+        <a href="ai-development.html">AI Development</a>
+        <a href="index.html#cta">Contact</a>
+      </nav>
     </header>
 
     <main>
@@ -66,6 +59,7 @@
             type="video/mp4"
           />
         </video>
+        <canvas class="hero-particles" id="hero-particles" aria-hidden="true"></canvas>
         <div class="hero-overlay"></div>
         <div class="hero-content">
           <p class="kicker">Personal IT brand</p>
@@ -98,7 +92,7 @@
               <h3>Web3 systems</h3>
               <p>DApps, smart contracts and trading infrastructure with production-ready architecture</p>
             </a>
-            <a href="#cta" class="service-card glass hover-lift">
+            <a href="ai-development.html" class="service-card glass hover-lift">
               <h3>AI Development</h3>
               <p>Automation and AI tools that reduce costs and scale operations</p>
             </a>
@@ -162,33 +156,124 @@
           <header class="section-header">
             <h2>Speed is the advantage</h2>
             <p class="section-lead">
-              AI compresses timelines without compromising quality
+              Drag the slider — watch timelines and cost shift from classic dev to AI-accelerated delivery
             </p>
           </header>
-          <div class="speed-comparison glass">
-            <div class="speed-row">
-              <span class="speed-label">MVP timeline</span>
-              <div class="speed-compare">
-                <span class="speed-before">14 days</span>
-                <span class="speed-arrow" aria-hidden="true">→</span>
-                <span class="speed-after"><span class="counter" data-target="3">0</span> days</span>
+          <div class="ai-speed-panel glass">
+            <div class="ai-speed-slider-head">
+              <span class="ai-speed-tag ai-speed-tag--muted">Without AI</span>
+              <div class="ai-speed-track-wrap">
+                <div class="ai-speed-track-glow" aria-hidden="true"></div>
+                <input
+                  type="range"
+                  class="ai-speed-range"
+                  id="ai-speed-range"
+                  min="0"
+                  max="100"
+                  value="100"
+                  aria-label="Compare delivery: without AI versus with AI"
+                />
+              </div>
+              <span class="ai-speed-tag ai-speed-tag--accent">With AI</span>
+            </div>
+            <p class="ai-speed-hint">
+              <span id="ai-speed-mode-label">AI-accelerated</span>
+              <span class="ai-speed-hint__sub" id="ai-speed-hint-text"
+                >Production-grade velocity, human-in-the-loop where it counts</span
+              >
+            </p>
+            <div class="speed-comparison speed-comparison--slider" id="ai-speed-metrics">
+              <div class="speed-row">
+                <span class="speed-label">MVP timeline</span>
+                <div class="speed-compare">
+                  <span class="speed-before" id="metric-mvp-before">14 days</span>
+                  <span class="speed-arrow ai-speed-arrow" aria-hidden="true">→</span>
+                  <span class="speed-after speed-after--glow" id="metric-mvp-after">3 days</span>
+                </div>
+              </div>
+              <div class="speed-row">
+                <span class="speed-label">Full build</span>
+                <div class="speed-compare">
+                  <span class="speed-before" id="metric-full-before">~3 months</span>
+                  <span class="speed-arrow ai-speed-arrow" aria-hidden="true">→</span>
+                  <span class="speed-after speed-after--glow" id="metric-full-after">~4 weeks</span>
+                </div>
+              </div>
+              <div class="speed-row">
+                <span class="speed-label">Relative cost</span>
+                <div class="speed-compare">
+                  <span class="speed-before" id="metric-cost-before">100% baseline</span>
+                  <span class="speed-arrow ai-speed-arrow" aria-hidden="true">→</span>
+                  <span class="speed-after speed-after--glow" id="metric-cost-after">−70% vs classic</span>
+                </div>
               </div>
             </div>
-            <div class="speed-row">
-              <span class="speed-label">Full build</span>
-              <div class="speed-compare">
-                <span class="speed-before">3 months</span>
-                <span class="speed-arrow" aria-hidden="true">→</span>
-                <span class="speed-after"><span class="counter" data-target="4">0</span> weeks</span>
-              </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-split" id="ai-terminal">
+        <div class="container">
+          <header class="section-header section-header--center">
+            <h2>What runs under the hood</h2>
+            <p class="section-lead section-lead--center">
+              A live glimpse of how we orchestrate models, tests, and deploy — the same rigor as production engineering
+            </p>
+          </header>
+          <div class="terminal-window glass">
+            <div class="terminal-window__chrome">
+              <span class="terminal-window__dots" aria-hidden="true"
+                ><i></i><i></i><i></i
+              ></span>
+              <span class="terminal-window__title">d-art — ai pipeline</span>
+              <span class="terminal-window__badge">RUNNING</span>
             </div>
-            <div class="speed-row">
-              <span class="speed-label">Cost</span>
-              <div class="speed-compare">
-                <span class="speed-before">baseline</span>
-                <span class="speed-arrow" aria-hidden="true">→</span>
-                <span class="speed-after">−<span class="counter" data-target="70">0</span>%</span>
-              </div>
+            <div class="terminal-window__body">
+              <pre class="terminal-window__pre" id="terminal-typing" aria-live="polite"
+                ><code id="terminal-code"></code><span class="terminal-caret"></span
+              ></pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-diagonal" id="dev-compare">
+        <div class="container">
+          <header class="section-header section-header--center">
+            <h2>Classic stack vs AI-accelerated</h2>
+            <p class="section-lead section-lead--center">
+              Same quality bar — different throughput. Flip the switch to see how we work.
+            </p>
+          </header>
+          <div class="dev-compare glass dev-compare--mode-ai">
+            <div class="dev-compare__switch" role="group" aria-label="Compare development approaches">
+              <button type="button" class="dev-compare__btn" data-compare="classic">
+                Traditional
+              </button>
+              <button type="button" class="dev-compare__btn is-active" data-compare="ai" type="button">
+                AI-accelerated
+              </button>
+              <span class="dev-compare__pill" aria-hidden="true"></span>
+            </div>
+            <div class="dev-compare__grid">
+              <article class="dev-compare__card dev-compare__card--classic" data-side="classic">
+                <h3 class="dev-compare__card-title">Traditional delivery</h3>
+                <ul class="dev-compare__list">
+                  <li>Specs frozen early — change is expensive</li>
+                  <li>Boilerplate and glue code written by hand</li>
+                  <li>Integration phases spaced weeks apart</li>
+                  <li>Quality gates rely on manual review volume</li>
+                </ul>
+              </article>
+              <article class="dev-compare__card dev-compare__card--ai dev-compare__card--highlight" data-side="ai">
+                <h3 class="dev-compare__card-title">AI-accelerated delivery</h3>
+                <ul class="dev-compare__list">
+                  <li>Living specs — iterate with generative prototypes</li>
+                  <li>AI drafts code & tests; humans approve and refine</li>
+                  <li>Continuous integration — ship small, measure fast</li>
+                  <li>Automated checks + targeted human review on risk</li>
+                </ul>
+              </article>
             </div>
           </div>
         </div>
@@ -232,30 +317,15 @@
     </main>
 
     <footer class="footer">
-  <div class="footer-inner">
-
-    <div class="footer-brand">
-      <h3>D-Art</h3>
-      <p>Web, Web3 and AI development</p>
-    </div>
-
-    <div class="footer-links">
-      <a href="/d-art/web/">Web</a>
-      <a href="/d-art/web3/">Web3</a>
-      <a href="/d-art/ai/">AI</a>
-      <a href="/d-art/contact/">Contact</a>
-    </div>
-
-    <div class="footer-cta">
-      <a href="/d-art/contact/" class="btn">Start a project</a>
-    </div>
-
-  </div>
-
-  <div class="footer-bottom">
-    © 2026 D-Art
-  </div>
-</footer>
+      <div class="container footer-inner">
+        <span>© 2026 D-Art</span>
+        <div class="footer-links">
+          <a href="#services">Services</a>
+          <a href="ai-development.html">AI Development</a>
+          <a href="mailto:hello@d-art.dev">Contact</a>
+        </div>
+      </div>
+    </footer>
 
     <script src="script.js"></script>
   </body>
