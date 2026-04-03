@@ -6,7 +6,7 @@
     <title>D-Art | Web, Web3 &amp; AI development</title>
     <meta
       name="description"
-      content="D-Art — персональный IT-бренд: Web, Web3 и AI-разработка с ускорением до 10x."
+      content="D-Art - personal IT-brand: Web, Web3 и AI-development with 10x speed."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -45,20 +45,7 @@
 
     <main>
       <section class="hero section" id="hero">
-        <video
-          class="hero-video"
-          autoplay
-          muted
-          loop
-          playsinline
-          preload="metadata"
-          aria-hidden="true"
-        >
-          <source
-            src="https://cdn.coverr.co/videos/coverr-constellation-1579/1080p.mp4"
-            type="video/mp4"
-          />
-        </video>
+        <!-- Фон — анимированный CSS-градиент (внешнее видео с Coverr давало 404). Свой loop: положите media/hero.mp4 и раскомментируйте блок video ниже. -->
         <canvas class="hero-particles" id="hero-particles" aria-hidden="true"></canvas>
         <div class="hero-overlay"></div>
         <div class="hero-content">
@@ -117,6 +104,21 @@
         </div>
       </section>
 
+      <section class="marquee-auto">
+        <div class="marquee-line">
+          <div class="marquee-content">
+            <span>Performance • Scale • AI • Systems • Code • Design • </span>
+            <span>Performance • Scale • AI • Systems • Code • Design • </span>
+            </div>
+        </div>
+      
+        <div class="marquee-line reverse">
+          <div class="marquee-content">
+                        <span>Performance • Scale • AI • Systems • Code • Design </span>
+            <span>Performance • Scale • AI • Systems • Code • Design </span>
+          </div>
+        </div>
+      </section>
 
       <section class="section section-split" id="approach">
         <div class="container">
@@ -279,24 +281,28 @@
         </div>
       </section>
 
-      <section class="section section-split" id="ai-power">
+      <section
+        class="section section-split page-section"
+        id="ai-power"
+        data-pipeline-typewriter
+      >
         <div class="container">
           <header class="section-header">
-            <h2>AI is our tool, not the product</h2>
-            <p class="section-lead">
+            <h2 class="pipeline-tw-heading">AI is our tool, not the product</h2>
+            <p class="section-lead pipeline-tw-lead">
               AI where it makes sense. Human control where it matters.
             </p>
           </header>
           <div class="pipeline-wrap glass">
             <div class="pipeline-light" aria-hidden="true"></div>
-            <div class="pipeline">
-              <span class="pipeline-step">Idea</span>
+            <div class="pipeline" role="list">
+              <span class="pipeline-step" role="listitem">Idea</span>
               <span class="pipeline-arrow" aria-hidden="true">→</span>
-              <span class="pipeline-step">AI design</span>
+              <span class="pipeline-step" role="listitem">AI design</span>
               <span class="pipeline-arrow" aria-hidden="true">→</span>
-              <span class="pipeline-step">AI Development</span>
+              <span class="pipeline-step" role="listitem">AI Development</span>
               <span class="pipeline-arrow" aria-hidden="true">→</span>
-              <span class="pipeline-step">Launch</span>
+              <span class="pipeline-step" role="listitem">Launch</span>
             </div>
           </div>
         </div>
@@ -319,11 +325,9 @@
       <div class="container footer-inner">
         <span>© 2026 D-Art</span>
         <div class="footer-links">
-          <span class="footer-links__here" aria-current="page">Home</span>
           <a href="web-development.html">Web</a>
           <a href="web3-development.html">Web3</a>
           <a href="ai-development.html">AI</a>
-          <a href="mailto:hello@d-art.dev">Contact</a>
         </div>
       </div>
     </footer>

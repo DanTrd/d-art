@@ -103,7 +103,25 @@ if (navToggle && siteNav) {
   });
 }
 
-/* ---------- Hero particles ---------- */
+/* ---------- Hero particles (falling “stars” on index hero) ----------
+ * Tuning:
+ *   HERO_PARTICLES.areaDivisor — меньше число → больше частиц (плотность ~ area / divisor).
+ *   HERO_PARTICLES.maxCount — верхний предел числа частиц.
+ *   HERO_PARTICLES.reducedMotionCount — сколько частиц при prefers-reduced-motion.
+ *   HERO_PARTICLES.speedMul — множитель скорости падения/дрейфа (выше = интенсивнее движение).
+ *   HERO_PARTICLES.alphaMin / alphaRange — базовая яркость и амплитуда мерцания (интенсивность свечения).
+ * Слой целиком: в styles.css селектор .hero-particles { opacity: … }
+ *
+ * Пресет ниже — « editorial / luxury »: мало точек, медленно, тихое мерцание; не спорит с видео и типографикой.
+ */
+const HERO_PARTICLES = {
+  areaDivisor: 15000,
+  maxCount: 64,
+  reducedMotionCount: 22,
+  speedMul: 0.52,
+  alphaMin: 0.07,
+  alphaRange: 0.32,
+};
 
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -134,7 +152,9 @@ const initHeroParticles = () => {
     canvas.style.height = `${h}px`;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-    const target = prefersReducedMotion ? 42 : Math.min(140, Math.floor((w * h) / 9000));
+    const target = prefersReducedMotion
+      ? HERO_PARTICLES.reducedMotionCount
+      : Math.min(HERO_PARTICLES.maxCount, Math.floor((w * h) / HERO_PARTICLES.areaDivisor));
     particles.length = 0;
     for (let i = 0; i < target; i++) {
       particles.push({
@@ -156,9 +176,10 @@ const initHeroParticles = () => {
 
     particles.forEach((p) => {
       if (!prefersReducedMotion) {
-        p.x += p.vx + Math.sin(time * 0.4 + p.phase) * 0.15;
-        p.y += p.vy * p.tw * 0.45;
-        p.x += Math.cos(time * 0.25 + p.phase * 0.5) * 0.12;
+        const sm = HERO_PARTICLES.speedMul;
+        p.x += (p.vx + Math.sin(time * 0.4 + p.phase) * 0.15) * sm;
+        p.y += p.vy * p.tw * 0.45 * sm;
+        p.x += Math.cos(time * 0.25 + p.phase * 0.5) * 0.12 * sm;
       }
 
       if (p.y > h + 6) {
@@ -169,7 +190,7 @@ const initHeroParticles = () => {
       if (p.x > w + 4) p.x = -4;
 
       const twinkle = 0.35 + 0.65 * Math.sin(time * 2.2 + p.phase);
-      const alpha = 0.15 + twinkle * 0.55;
+      const alpha = HERO_PARTICLES.alphaMin + twinkle * HERO_PARTICLES.alphaRange;
 
       ctx.beginPath();
       ctx.fillStyle = p.color;
@@ -1058,6 +1079,135 @@ const initWeb3HeroBlock = () => {
     el.textContent = n.toLocaleString("en-US");
   }, 12_000);
 };
+
+/* ---------- AI pipeline typewriter (all pages: #ai-power) ---------- */
+
+const initPipelineTypewriter = () => {
+  const section = document.querySelector("[data-pipeline-typewriter]");
+  if (!section) return;
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    return;
+  }
+
+  const heading = section.querySelector(".pipeline-tw-heading");
+  const lead = section.querySelector(".pipeline-tw-lead");
+  const pipeline = section.querySelector(".pipeline");
+  if (!heading || !lead || !pipeline) return;
+
+  const titleText = heading.textContent.trim();
+  const leadText = lead.textContent.trim();
+  const stepEls = [...pipeline.querySelectorAll(".pipeline-step")];
+  const stepTexts = stepEls.map((el) => el.textContent.trim());
+  if (!titleText || !stepTexts.length) return;
+
+  let runToken = 0;
+  const timeouts = [];
+
+  const clearAllTimeouts = () => {
+    timeouts.forEach((id) => window.clearTimeout(id));
+    timeouts.length = 0;
+  };
+
+  const wait = (ms) =>
+    new Promise((resolve) => {
+      const id = window.setTimeout(resolve, ms);
+      timeouts.push(id);
+    });
+
+  const typeInto = async (el, full, token) => {
+    el.classList.add("is-typing");
+    el.textContent = "";
+    for (let i = 0; i <= full.length; i++) {
+      if (token !== runToken) {
+        el.classList.remove("is-typing");
+        return;
+      }
+      el.textContent = full.slice(0, i);
+      if (i < full.length) {
+        await wait(11 + Math.random() * 28);
+      }
+    }
+    el.classList.remove("is-typing");
+  };
+
+  const restoreStatic = () => {
+    heading.textContent = titleText;
+    lead.textContent = leadText;
+    stepEls.forEach((el, i) => {
+      el.textContent = stepTexts[i] || "";
+    });
+    heading.classList.remove("is-typing");
+    lead.classList.remove("is-typing");
+    stepEls.forEach((el) => el.classList.remove("is-typing"));
+  };
+
+  const runLoop = async (token) => {
+    while (token === runToken) {
+      heading.textContent = "";
+      lead.textContent = "";
+      stepEls.forEach((el) => {
+        el.textContent = "";
+      });
+
+      await typeInto(heading, titleText, token);
+      if (token !== runToken) break;
+      await wait(260);
+      await typeInto(lead, leadText, token);
+      if (token !== runToken) break;
+      await wait(360);
+
+      for (let s = 0; s < stepEls.length; s++) {
+        if (token !== runToken) break;
+        await typeInto(stepEls[s], stepTexts[s], token);
+        if (token !== runToken) break;
+        await wait(220);
+      }
+      if (token !== runToken) break;
+
+      await wait(2100);
+      if (token !== runToken) break;
+
+      section.classList.add("pipeline-tw--soft-hide");
+      await wait(400);
+      if (token !== runToken) break;
+      section.classList.remove("pipeline-tw--soft-hide");
+      await wait(160);
+    }
+  };
+
+  const start = () => {
+    runToken++;
+    const token = runToken;
+    clearAllTimeouts();
+    section.classList.remove("pipeline-tw--soft-hide");
+    runLoop(token);
+  };
+
+  const stop = () => {
+    runToken++;
+    clearAllTimeouts();
+    section.classList.remove("pipeline-tw--soft-hide");
+    restoreStatic();
+  };
+
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          start();
+        } else {
+          stop();
+        }
+      });
+    },
+    { threshold: 0.12, rootMargin: "0px 0px -6% 0px" }
+  );
+
+  io.observe(section);
+};
+
+initPipelineTypewriter();
 
 initWeb3ChainCanvas();
 initWeb3ChartCanvas();

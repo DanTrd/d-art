@@ -17,9 +17,6 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body class="page-web3">
-    <div class="site-bg-orb orb-1" data-parallax></div>
-    <div class="site-bg-orb orb-2" data-parallax></div>
-
     <header class="topbar glass" id="topbar">
       <a href="index.html" class="brand">D-Art</a>
       <button
@@ -45,7 +42,6 @@
 
     <main>
       <section class="page-hero page-hero--split page-hero--web3 section page-section" id="hero">
-        <canvas class="web3-chain-canvas" id="web3-chain-canvas" aria-hidden="true"></canvas>
         <div class="page-hero__bg" aria-hidden="true"></div>
         <div class="page-hero__layout container">
           <div class="page-hero__copy">
@@ -421,25 +417,31 @@
         </div>
       </section>
 
-      <section class="section section-diagonal-reverse page-section" id="process">
+      <section
+        class="section section-split page-section"
+        id="ai-power"
+        data-pipeline-typewriter
+      >
         <div class="container">
-          <header class="section-header section-header--center">
-            <h2>Process</h2>
-            <p class="section-lead section-lead--center">
-              Specs you can reason about — then ship, test, and monitor.
+          <header class="section-header">
+            <h2 class="pipeline-tw-heading">AI is our tool, not the product</h2>
+            <p class="section-lead pipeline-tw-lead">
+              Specs you can reason about - then ship, test, and monitor.
             </p>
           </header>
-
-          <div class="process-flow glass">
-            <span class="process-flow__step">Discovery</span>
-            <span class="process-flow__arrow" aria-hidden="true">→</span>
-            <span class="process-flow__step">Architecture</span>
-            <span class="process-flow__arrow" aria-hidden="true">→</span>
-            <span class="process-flow__step">Contracts</span>
-            <span class="process-flow__arrow" aria-hidden="true">→</span>
-            <span class="process-flow__step">Testnet</span>
-            <span class="process-flow__arrow" aria-hidden="true">→</span>
-            <span class="process-flow__step">Mainnet</span>
+          <div class="pipeline-wrap glass">
+            <div class="pipeline-light" aria-hidden="true"></div>
+            <div class="pipeline" role="list">
+              <span class="pipeline-step" role="listitem">Discovery</span>
+              <span class="pipeline-arrow" aria-hidden="true">→</span>
+              <span class="pipeline-step" role="listitem">Architecture</span>
+              <span class="pipeline-arrow" aria-hidden="true">→</span>
+              <span class="pipeline-step" role="listitem">Contracts</span>
+              <span class="pipeline-arrow" aria-hidden="true">→</span>
+              <span class="pipeline-step" role="listitem">Testnet</span>
+              <span class="pipeline-arrow" aria-hidden="true">→</span>
+              <span class="pipeline-step" role="listitem">Mainnet</span>
+            </div>
           </div>
         </div>
       </section>
@@ -462,9 +464,7 @@
         <div class="footer-links">
           <a href="index.html">Home</a>
           <a href="web-development.html">Web</a>
-          <span class="footer-links__here" aria-current="page">Web3</span>
           <a href="ai-development.html">AI</a>
-          <a href="mailto:hello@d-art.dev">Contact</a>
         </div>
       </div>
     </footer>
