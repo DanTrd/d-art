@@ -92,7 +92,7 @@ if (navToggle && siteNav) {
   window.addEventListener(
     "resize",
     () => {
-      if (window.innerWidth > 980) setNavOpen(false);
+      if (window.innerWidth > 1023) setNavOpen(false);
     },
     { passive: true }
   );
