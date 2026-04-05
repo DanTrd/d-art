@@ -1244,23 +1244,6 @@ body.nav-open {
     gap: 0.35rem;
   }
 
-  .web3-pillar-grid,
-  .usecases-grid,
-  .work-grid,
-  .types-grid,
-  .integrations-build-grid,
-  .stack-grid,
-  .web3-build-grid,
-  .ai-build-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .usecases-grid .usecase-card:nth-child(3):last-child {
-    grid-column: auto;
-    max-width: none;
-    justify-self: stretch;
-  }
-
   .page-hero--split.page-hero--web3 .page-hero__web3-card {
     min-height: auto;
   }
@@ -3325,5 +3308,23 @@ z-index: 1;
   .usecases-grid,
   .approach-grid {
     gap: 1.2rem;
+  }
+}
+
+/* Card grids: one column ≤1023px — rules live here so they win over later base grid definitions */
+@media (max-width: 1023px) {
+  .web3-pillar-grid,
+  .usecases-grid,
+  .work-grid,
+  .integrations-build-grid,
+  .web3-build-grid,
+  .ai-build-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .usecases-grid .usecase-card:nth-child(3):last-child {
+    grid-column: auto;
+    max-width: none;
+    justify-self: stretch;
   }
 }
