@@ -1,0 +1,447 @@
+﻿<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web-разработка | D-Art</title>
+    <meta
+      name="description"
+      content="Web-разработка от лендингов до сложных платформ: скорость запуска, рост конверсии и архитектура под масштабирование."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="contact-widget.css" />
+  </head>
+  <body class="page-web">
+    <div class="site-bg-orb orb-1" data-parallax></div>
+    <div class="site-bg-orb orb-2" data-parallax></div>
+
+    <header class="topbar glass" id="topbar">
+      <a href="index.html" class="brand">D-Art</a>
+      <button
+        type="button"
+        class="nav-toggle"
+        id="nav-toggle"
+        aria-label="Открыть меню"
+        aria-expanded="false"
+        aria-controls="site-nav"
+      >
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+      <nav class="nav" id="site-nav">
+        <a href="index.html">Главная</a>
+        <a href="web-development.html" aria-current="page">Web</a>
+        <a href="web3-development.html">Web3</a>
+        <a href="ai-development.html">AI-разработка</a>
+        <div class="lang-switch" role="group" aria-label="Язык">
+          <a href="../web-development.html" class="lang-switch__link" hreflang="en">EN</a>
+          <span class="lang-switch__sep" aria-hidden="true">·</span>
+          <a href="web-development.html" class="lang-switch__link lang-switch__link--active" hreflang="ru">RU</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-hero page-hero--split section" id="hero">
+        <div class="page-hero__bg" aria-hidden="true"></div>
+        <div class="page-hero__layout container">
+          <div class="page-hero__copy">
+            <div class="hero-content page-hero__inner">
+              <p class="kicker">Web-разработка</p>
+              <h1 class="page-hero__title">
+                Web-разработка, которая <span class="animated-gradient-text">приносит результат</span>
+              </h1>
+              <p class="page-hero__subtitle page-hero__lead">
+                От лендингов до сложных платформ. Проектируем и запускаем продукты, которые конвертируют, растут и выдерживают масштаб
+              </p>
+            </div>
+          </div>
+          <div class="page-hero__arch" aria-hidden="true">
+            <canvas class="web-arch-canvas" id="web-arch-canvas"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <section class="web3-tx-river" aria-hidden="true">
+        <div class="web3-tx-river__fade web3-tx-river__fade--left"></div>
+        <div class="web3-tx-river__fade web3-tx-river__fade--right"></div>
+      
+        <div class="web3-tx-river__row">
+          <div class="web3-tx-river__track">
+            <span class="mono">
+              конверсия +42% · загрузка 0.9s · SEO настроено · mobile-first UX · Core Web Vitals пройдены
+            </span>
+            <span class="mono">
+              конверсия +42% · загрузка 0.9s · SEO настроено · mobile-first UX · Core Web Vitals пройдены
+            </span>
+          </div>
+        </div>
+      
+        <div class="web3-tx-river__row web3-tx-river__row--b">
+          <div class="web3-tx-river__track">
+            <span class="mono">
+              интеграции · платежи · CRM · аналитика · API · автоматизация · масштабируемая архитектура
+            </span>
+            <span class="mono">
+              интеграции · платежи · CRM · аналитика · API · автоматизация · масштабируемая архитектура
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-diagonal page-section" id="types">
+        <div class="container">
+          <header class="section-header">
+            <h2>Форматы сайтов</h2>
+            <p class="section-lead">
+              Подбираем формат под вашу задачу и точки роста. Берём на себя структуру, UX и интеграции
+            </p>
+          </header>
+          <div class="types-grid">
+            <article class="type-card glass hover-lift">
+              <h3>Лендинги</h3>
+              <p class="type-card__desc">
+                Лендинги, которые превращают трафик в заявки, лиды и продажи
+              </p>
+              <p class="type-card__meta-label">Подходит для</p>
+              <ul class="type-card__bullets">
+                <li>Запуска продукта</li>
+                <li>Платного трафика</li>
+                <li>Быстрой проверки гипотез</li>
+              </ul>
+              <p class="type-card__meta-label">Референсы</p>
+              <ul class="type-card__links">
+                <li><a href="https://stripe.com" target="_blank" rel="noopener noreferrer">Stripe · сильная подача платёжного продукта</a></li>
+                <li><a href="https://vercel.com" target="_blank" rel="noopener noreferrer">Vercel · понятный продуктовый нарратив</a></li>
+                <li><a href="https://linear.app" target="_blank" rel="noopener noreferrer">Linear · сфокусированный лендинг</a></li>
+              </ul>
+            </article>
+
+            <article class="type-card glass hover-lift">
+              <h3>Корпоративные сайты</h3>
+              <p class="type-card__desc">
+                Структурированные сайты, которые усиливают доверие и правильно позиционируют компанию
+              </p>
+              <p class="type-card__meta-label">Подходит для</p>
+              <ul class="type-card__bullets">
+                <li>Сайта компании</li>
+                <li>Услуг и B2B</li>
+                <li>Усиления бренда</li>
+              </ul>
+              <p class="type-card__meta-label">Референсы</p>
+              <ul class="type-card__links">
+                <li><a href="https://www.apple.com" target="_blank" rel="noopener noreferrer">Apple · чистая и сильная подача бренда</a></li>
+                <li><a href="https://www.ibm.com" target="_blank" rel="noopener noreferrer">IBM · продуманная enterprise-структура</a></li>
+                <li><a href="https://www.shopify.com/plus" target="_blank" rel="noopener noreferrer">Shopify Plus · сильная B2B-коммуникация</a></li>
+              </ul>
+            </article>
+
+            <article class="type-card glass hover-lift">
+              <h3>Интернет-магазины</h3>
+              <p class="type-card__desc">
+                E-commerce-проекты, которые повышают конверсию и помогают масштабировать продажи
+              </p>
+              <p class="type-card__meta-label">Возможности</p>
+              <ul class="type-card__bullets">
+                <li>Каталог, корзина, платежи</li>
+                <li>Аналитика и отслеживание</li>
+                <li>Быстрый mobile-first UX</li>
+              </ul>
+              <p class="type-card__meta-label">Референсы</p>
+              <ul class="type-card__links">
+                <li><a href="https://www.glossier.com" target="_blank" rel="noopener noreferrer">Glossier · бренд, который продаёт</a></li>
+                <li><a href="https://www.allbirds.com" target="_blank" rel="noopener noreferrer">Allbirds · сильный product-led UX</a></li>
+                <li><a href="https://www.figma.com" target="_blank" rel="noopener noreferrer">Figma · хорошие SaaS checkout-паттерны</a></li>
+              </ul>
+            </article>
+
+            <article class="type-card glass hover-lift">
+              <h3>Продуктовые сайты</h3>
+              <p class="type-card__desc">
+                Сайты, которые понятно объясняют продукт и превращают посетителей в пользователей
+              </p>
+              <p class="type-card__meta-label">Подходит для</p>
+              <ul class="type-card__bullets">
+                <li>SaaS-продуктов</li>
+                <li>B2B-платформ</li>
+                <li>Запуска новых решений</li>
+              </ul>
+              <p class="type-card__meta-label">Референсы</p>
+              <ul class="type-card__links">
+                <li><a href="https://www.notion.so/product" target="_blank" rel="noopener noreferrer">Notion · сильная история продукта</a></li>
+                <li><a href="https://slack.com/intl/en-gb/" target="_blank" rel="noopener noreferrer">Slack · хорошая сегментация сценариев</a></li>
+                <li><a href="https://www.figma.com/design" target="_blank" rel="noopener noreferrer">Figma · глубина подачи функционала</a></li>
+              </ul>
+            </article>
+
+            <article class="type-card glass hover-lift">
+              <h3>Кастомные платформы</h3>
+              <p class="type-card__desc">
+                Индивидуальные платформы под ваш бизнес, когда коробочных решений уже недостаточно
+              </p>
+              <p class="type-card__meta-label">Возможности</p>
+              <ul class="type-card__bullets">
+                <li>Роли пользователей и доступы</li>
+                <li>Интеграции и API</li>
+                <li>Внутренние сервисы и дашборды</li>
+              </ul>
+              <p class="type-card__meta-label">Референсы</p>
+              <ul class="type-card__links">
+                <li><a href="https://retool.com" target="_blank" rel="noopener noreferrer">Retool · внутренние приложения</a></li>
+                <li><a href="https://www.airtable.com" target="_blank" rel="noopener noreferrer">Airtable · UX вокруг данных</a></li>
+                <li><a href="https://supabase.com" target="_blank" rel="noopener noreferrer">Supabase · сильные dashboard-паттерны</a></li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-split page-section" id="web-performance">
+        <div class="container">
+          <header class="section-header section-header--center">
+            <h2>Скорость, которую видно в метриках</h2>
+            <p class="section-lead section-lead--center">
+              Быстрые и стабильные сайты, соответствующие современным стандартам производительности
+            </p>
+          </header>
+          <div class="web-perf-showcase glass">
+            <div class="web-speedometer" id="web-speedometer">
+              <svg
+                class="web-speedometer__svg"
+                viewBox="0 0 200 118"
+                role="img"
+                aria-labelledby="speedometer-title"
+              >
+                <title id="speedometer-title">Шкала оценки производительности</title>
+                <defs>
+                  <linearGradient id="webGaugeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#f472b6" />
+                    <stop offset="50%" stop-color="#a78bfa" />
+                    <stop offset="100%" stop-color="#6ee7f9" />
+                  </linearGradient>
+                </defs>
+                <path
+                  class="web-speedometer__track"
+                  d="M 24 100 A 76 76 0 0 0 176 100"
+                  fill="none"
+                  stroke="rgba(15,23,42,0.08)"
+                  stroke-width="10"
+                  stroke-linecap="round"
+                />
+                <path
+                  class="web-speedometer__fill"
+                  id="web-speedometer-arc"
+                  d="M 24 100 A 76 76 0 0 0 176 100"
+                  fill="none"
+                  stroke="url(#webGaugeGrad)"
+                  stroke-width="10"
+                  stroke-linecap="round"
+                  pathLength="100"
+                  stroke-dasharray="100"
+                  stroke-dashoffset="100"
+                />
+                <g class="web-speedometer__needle-group" id="web-speedometer-needle-group" transform="translate(100,100)">
+                  <line
+                    class="web-speedometer__needle"
+                    id="web-speedometer-needle"
+                    x1="0"
+                    y1="0"
+                    x2="62"
+                    y2="0"
+                    stroke="#0f172a"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                  />
+                  <circle cx="0" cy="0" r="5" fill="#0f172a" />
+                  <circle cx="0" cy="0" r="2" fill="#6ee7f9" opacity="0.9" />
+                </g>
+              </svg>
+              <div class="web-speedometer__readout">
+                <span class="web-speedometer__value" id="speedometer-value">0</span>
+                <span class="web-speedometer__slash">/</span>
+                <span class="web-speedometer__max">100</span>
+              </div>
+              <p class="web-speedometer__caption">Оценка производительности в стиле Lighthouse</p>
+            </div>
+            <div class="web-perf-metrics">
+              <div class="web-perf-metric" data-metric="lcp">
+                <div class="web-perf-metric__head">
+                  <span class="web-perf-metric__name">LCP</span>
+                  <span class="web-perf-metric__tag">Отрисовка крупнейшего элемента</span>
+                </div>
+                <div class="web-perf-metric__bar">
+                  <span class="web-perf-metric__fill" style="--fill: 0.92"></span>
+                </div>
+                <span class="web-perf-metric__target">&lt; 2.5s цель</span>
+              </div>
+              <div class="web-perf-metric" data-metric="inp">
+                <div class="web-perf-metric__head">
+                  <span class="web-perf-metric__name">INP</span>
+                  <span class="web-perf-metric__tag">Скорость отклика интерфейса</span>
+                </div>
+                <div class="web-perf-metric__bar">
+                  <span class="web-perf-metric__fill" style="--fill: 0.88"></span>
+                </div>
+                <span class="web-perf-metric__target">&lt; 200ms цель</span>
+              </div>
+              <div class="web-perf-metric" data-metric="cls">
+                <div class="web-perf-metric__head">
+                  <span class="web-perf-metric__name">CLS</span>
+                  <span class="web-perf-metric__tag">Стабильность вёрстки</span>
+                </div>
+                <div class="web-perf-metric__bar">
+                  <span class="web-perf-metric__fill" style="--fill: 0.95"></span>
+                </div>
+                <span class="web-perf-metric__target">&lt; 0.1 без скачков интерфейса</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-split page-section" id="use-cases">
+        <div class="container">
+          <header class="section-header section-header--center">
+            <h2>Для кого это</h2>
+            <p class="section-lead section-lead--center">
+              Подстраиваем продукт под бизнес-задачу, а не заставляем бизнес подстраиваться под шаблон
+            </p>
+          </header>
+          <div class="usecases-grid">
+            <article class="usecase-card glass">
+              <h3>Стартапы</h3>
+              <p>
+                От лендинга до первых пользователей. Быстрый запуск, быстрые итерации и фокус на росте
+              </p>
+            </article>
+            <article class="usecase-card glass">
+              <h3>Бизнес</h3>
+              <p>
+                Усиливаем цифровое присутствие. Надёжные сайты и системы, которые поддерживают продажи и операционку
+              </p>
+            </article>
+            <article class="usecase-card glass">
+              <h3>Команды</h3>
+              <p>
+                Помогаем расти без хаоса: понятная структура, документация и системы, готовые к масштабу
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-diagonal-reverse page-section" id="work">
+        <div class="container">
+          <header class="section-header">
+            <h2>Избранные проекты</h2>
+            <p class="section-lead">
+              Несколько показательных кейсов. Полное портфолио покажем по запросу
+            </p>
+          </header>
+          <div class="work-grid">
+            <article class="work-card glass hover-lift">
+              <h3>Aurora Analytics</h3>
+              <p>Маркетинговый сайт и in-app-сценарии для B2B SaaS-продукта. Сделано с упором на конверсию</p>
+              <a class="work-card__link" href="mailto:hello@d-art.dev?subject=Case%20study%3A%20Aurora">Запросить кейс →</a>
+            </article>
+            <article class="work-card glass hover-lift">
+              <h3>Northline Commerce</h3>
+              <p>Headless e-commerce storefront с быстрым каталогом и мобильным checkout, заточенным под продажу</p>
+              <a class="work-card__link" href="mailto:hello@d-art.dev?subject=Case%20study%3A%20Northline">Запросить кейс →</a>
+            </article>
+            <article class="work-card glass hover-lift">
+              <h3>Helix Portal</h3>
+              <p>Клиентский портал с ролями и CRM-интеграцией. Меньше обращений в поддержку, понятнее пользовательский путь</p>
+              <a class="work-card__link" href="mailto:hello@d-art.dev?subject=Case%20study%3A%20Helix">Запросить кейс →</a>
+            </article>
+            <article class="work-card glass hover-lift">
+              <h3>Signal Launch</h3>
+              <p>Система лендингов на переиспользуемых блоках для быстрого запуска кампаний без задержек на разработке</p>
+              <a class="work-card__link" href="mailto:hello@d-art.dev?subject=Case%20study%3A%20Signal">Запросить кейс →</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+ 
+      <section
+        class="section section-split page-section"
+        id="ai-power"
+        data-pipeline-typewriter
+      >
+        <div class="container">
+          <header class="section-header">
+            <h2 class="pipeline-tw-heading">Процесс</h2>
+            <p class="section-lead pipeline-tw-lead">
+              Понятный путь от идеи до запуска без лишней бюрократии
+            </p>
+          </header>
+          <div class="pipeline-wrap glass">
+            <div class="pipeline-light" aria-hidden="true"></div>
+            <div class="pipeline" role="list">
+              <span class="pipeline-step" role="listitem">Исследование</span>
+              <span class="pipeline-step" role="listitem">Дизайн</span>
+              <span class="pipeline-step" role="listitem">Разработка</span>
+              <span class="pipeline-step" role="listitem">Запуск</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="marquee-auto">
+        <div class="marquee-line">
+          <div class="marquee-content">
+            <span>Сайты • Платформы • E-commerce • Продукты • Системы •
+              Рост • Конверсия • Скорость • Масштаб • UX •</span>
+            <span>Сайты • Платформы • E-commerce • Продукты • Системы •
+              Рост • Конверсия • Скорость • Масштаб • UX •</span>
+          </div>
+        </div>
+      
+        <div class="marquee-line reverse">
+          <div class="marquee-content">
+            <span>Сайты • Платформы • E-commerce • Продукты • Системы •
+              Рост • Конверсия • Скорость • Масштаб • UX • </span>
+            <span>Сайты • Платформы • E-commerce • Продукты • Системы •
+              Рост • Конверсия • Скорость • Масштаб • UX • </span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-final page-section" id="cta">
+        <div class="container final-cta glass">
+          <h2>Давайте запустим сайт, который продаёт</h2>
+          <p class="final-cta__lead">
+            Расскажите, что вы строите, и мы вернёмся с понятным следующим шагом
+          </p>
+          <button type="button" class="btn btn-glass" data-cw-start>Обсудить проект</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <span>© 2026 D-Art</span>
+        <div class="footer-links">
+          <a href="index.html">Главная</a>
+          <a href="web3-development.html">Web3</a>
+          <a href="ai-development.html">AI</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script
+      src="contact-widget.js"
+      defer
+      data-telegram-url="https://t.me/"
+    ></script>
+  </body>
+</html>

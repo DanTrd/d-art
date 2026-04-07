@@ -40,7 +40,11 @@
         <a href="web-development.html" aria-current="page">Web</a>
         <a href="web3-development.html">Web3</a>
         <a href="ai-development.html">AI Development</a>
-        <a href="index.html#cta">Contact</a>
+        <div class="lang-switch" role="group" aria-label="Language">
+          <a href="web-development.html" class="lang-switch__link lang-switch__link--active" hreflang="en">EN</a>
+          <span class="lang-switch__sep" aria-hidden="true">·</span>
+          <a href="ru/web-development.html" class="lang-switch__link" hreflang="ru">RU</a>
+        </div>
       </nav>
     </header>
 
@@ -360,95 +364,6 @@
               <h3>Signal Launch</h3>
               <p>Landing system with reusable blocks for fast campaign launches without development delays</p>
               <a class="work-card__link" href="mailto:hello@d-art.dev?subject=Case%20study%3A%20Signal">View case study →</a>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section section-split page-section" id="integrations">
-        <div class="container">
-          <header class="section-header">
-            <h2>Integrations</h2>
-            <p class="section-lead">
-              We integrate your product with the tools you already use. Built properly, not patched together
-            </p>
-          </header>
-          <div class="integrations-build-grid" id="integrations-build">
-            <article
-              class="integration-build-card glass integration-build-card--crm"
-              data-build-index="0"
-              style="--build-i: 0"
-            >
-              <div class="integration-build-card__scan" aria-hidden="true"></div>
-              <div class="integration-build-card__header">
-                <span class="integration-build-card__icon" aria-hidden="true"></span>
-                <span class="integration-build-card__label">CRM</span>
-                <span class="integration-build-card__status">linked</span>
-              </div>
-              <p class="integration-build-card__value">
-                HubSpot, Salesforce, Pipedrive, custom APIs
-              </p>
-              <p class="integration-build-card__log">
-                <span class="integration-build-card__log-line">→ sync.contacts.schema v2</span>
-                <span class="integration-build-card__log-line">→ webhook /crm/events</span>
-              </p>
-            </article>
-            <article
-              class="integration-build-card glass integration-build-card--pay"
-              data-build-index="1"
-              style="--build-i: 1"
-            >
-              <div class="integration-build-card__scan" aria-hidden="true"></div>
-              <div class="integration-build-card__header">
-                <span class="integration-build-card__icon" aria-hidden="true"></span>
-                <span class="integration-build-card__label">Payments</span>
-                <span class="integration-build-card__status">linked</span>
-              </div>
-              <p class="integration-build-card__value">
-                Stripe, Paddle, invoicing &amp; subscription flows
-              </p>
-              <p class="integration-build-card__log">
-                <span class="integration-build-card__log-line">→ billing.portal.session</span>
-                <span class="integration-build-card__log-line">→ invoice.paid ✓</span>
-              </p>
-            </article>
-            <article
-              class="integration-build-card glass integration-build-card--api"
-              data-build-index="2"
-              style="--build-i: 2"
-            >
-              <div class="integration-build-card__scan" aria-hidden="true"></div>
-              <div class="integration-build-card__header">
-                <span class="integration-build-card__icon" aria-hidden="true"></span>
-                <span class="integration-build-card__label">APIs</span>
-                <span class="integration-build-card__status">linked</span>
-              </div>
-              <p class="integration-build-card__value">
-                REST, GraphQL, webhooks, partner integrations
-              </p>
-              <p class="integration-build-card__log">
-                <span class="integration-build-card__log-line">→ openapi 3.1 bundle</span>
-                <span class="integration-build-card__log-line">→ idempotency-key: *</span>
-              </p>
-            </article>
-            <article
-              class="integration-build-card glass integration-build-card--analytics"
-              data-build-index="3"
-              style="--build-i: 3"
-            >
-              <div class="integration-build-card__scan" aria-hidden="true"></div>
-              <div class="integration-build-card__header">
-                <span class="integration-build-card__icon" aria-hidden="true"></span>
-                <span class="integration-build-card__label">Analytics</span>
-                <span class="integration-build-card__status">linked</span>
-              </div>
-              <p class="integration-build-card__value">
-                GA4, Mixpanel, Plausible, server-side events
-              </p>
-              <p class="integration-build-card__log">
-                <span class="integration-build-card__log-line">→ ssr events flush</span>
-                <span class="integration-build-card__log-line">→ consent mode strict</span>
-              </p>
             </article>
           </div>
         </div>

@@ -1,0 +1,432 @@
+﻿<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web3-разработка | D-Art</title>
+    <meta
+      name="description"
+      content="Web3-разработка: смарт-контракты, токены, DeFi и DApps — надёжная архитектура, понятная экономика и готовность к реальному рынку."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="contact-widget.css" />
+  </head>
+  <body class="page-web3">
+    <div class="site-bg-orb orb-1" data-parallax></div>
+    <div class="site-bg-orb orb-2" data-parallax></div>
+
+    <header class="topbar glass" id="topbar">
+      <a href="index.html" class="brand">D-Art</a>
+      <button
+        type="button"
+        class="nav-toggle"
+        id="nav-toggle"
+        aria-label="Открыть меню"
+        aria-expanded="false"
+        aria-controls="site-nav"
+      >
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+      <nav class="nav" id="site-nav">
+        <a href="index.html">Главная</a>
+        <a href="web-development.html">Web</a>
+        <a href="web3-development.html" aria-current="page">Web3</a>
+        <a href="ai-development.html">AI-разработка</a>
+        <div class="lang-switch" role="group" aria-label="Язык">
+          <a href="../web3-development.html" class="lang-switch__link" hreflang="en">EN</a>
+          <span class="lang-switch__sep" aria-hidden="true">·</span>
+          <a href="web3-development.html" class="lang-switch__link lang-switch__link--active" hreflang="ru">RU</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-hero page-hero--split page-hero--web3 section page-section" id="hero">
+        <div class="page-hero__bg" aria-hidden="true"></div>
+        <div class="page-hero__layout container">
+          <div class="page-hero__copy">
+            <div class="hero-content page-hero__inner">
+              <p class="kicker">Web3-разработка</p>
+              <h1 class="page-hero__title">
+                Децентрализованные продукты, которые <span class="animated-gradient-text">работают на реальном рынке</span>
+              </h1>
+              <p class="subtitle page-hero__subtitle">
+                Смарт-контракты, токены и DApp-продукты, рассчитанные на безопасность, понятную механику и настоящую ликвидность. Без хайпа, только рабочие системы
+              </p>
+            </div>
+          </div>
+          <div class="page-hero__web3-card">
+            <div class="web3-hero-panel glass">
+              <div class="web3-hero-panel__head">
+                <span class="web3-hero-panel__live"></span>
+                <span class="web3-hero-panel__title">Ethereum · mainnet</span>
+              </div>
+              <div class="web3-hero-panel__stats">
+                <div>
+                  <span class="web3-hero-panel__label">Блок</span>
+                  <span class="mono web3-hero-panel__value" id="web3-hero-block">19,284,102</span>
+                </div>
+                <div>
+                  <span class="web3-hero-panel__label">Газ</span>
+                  <span class="mono web3-hero-panel__value">24 gwei</span>
+                </div>
+              </div>
+              <div class="web3-hero-panel__spark" aria-hidden="true">
+                <span></span><span></span><span></span><span></span><span></span><span></span
+                ><span></span><span></span>
+              </div>
+              <p class="web3-hero-panel__hint mono">синхр. · public RPC · demo stats</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="web3-tx-river" aria-hidden="true">
+        <div class="web3-tx-river__fade web3-tx-river__fade--left"></div>
+        <div class="web3-tx-river__fade web3-tx-river__fade--right"></div>
+        <div class="web3-tx-river__row">
+          <div class="web3-tx-river__track">
+            <span class="mono"
+              >подтверждено 0x7f2a…b91 · ERC-20 transfer · блок 19,284,102 · 12 подтверждений</span
+            >
+            <span class="mono"
+              >подтверждено 0x7f2a…b91 · ERC-20 transfer · блок 19,284,102 · 12 подтверждений</span
+            >
+          </div>
+        </div>
+        <div class="web3-tx-river__row web3-tx-river__row--b">
+          <div class="web3-tx-river__track">
+            <span class="mono"
+              >контракт 0x4d…e8 · верифицирован · solidity 0.8.23 · optimizer 200 runs</span
+            >
+            <span class="mono"
+              >контракт 0x4d…e8 · верифицирован · solidity 0.8.23 · optimizer 200 runs</span
+            >
+          </div>
+        </div>
+      </section>
+
+      <section class="web3-crypto-strip section section--compact">
+        <div class="container">
+          <p class="web3-crypto-strip__label">С какими сетями и активами работаем</p>
+          <ul class="web3-crypto-strip__list" role="list">
+            <li>
+              <span class="web3-crypto-icon" title="Bitcoin">
+                <svg viewBox="0 0 32 32" aria-hidden="true" class="web3-crypto-icon__svg">
+                  <circle cx="16" cy="16" r="15" fill="#F7931A" />
+                  <text
+                    x="16"
+                    y="21"
+                    text-anchor="middle"
+                    fill="#fff"
+                    font-size="14"
+                    font-weight="800"
+                    font-family="Inter,sans-serif"
+                  >
+                    ₿
+                  </text>
+                </svg>
+                <span class="web3-crypto-icon__name">Bitcoin</span>
+              </span>
+            </li>
+            <li>
+              <span class="web3-crypto-icon" title="Ethereum">
+                <svg viewBox="0 0 32 32" aria-hidden="true" class="web3-crypto-icon__svg">
+                  <circle cx="16" cy="16" r="15" fill="#627EEA" />
+                  <path fill="#fff" d="M16 6l7.5 12.5L16 17l-7.5 1.5L16 6z" opacity=".95" />
+                  <path fill="#C1CCF7" d="M16 17l7.5 4.5L16 26l-7.5-4.5L16 17z" />
+                  <path fill="#fff" d="M16 17V6l7.5 12.5L16 17z" opacity=".45" />
+                </svg>
+                <span class="web3-crypto-icon__name">Ethereum</span>
+              </span>
+            </li>
+            <li>
+              <span class="web3-crypto-icon" title="Solana">
+                <svg viewBox="0 0 32 32" aria-hidden="true" class="web3-crypto-icon__svg">
+                  <defs>
+                    <linearGradient id="solG" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#9945FF" />
+                      <stop offset="100%" stop-color="#14F195" />
+                    </linearGradient>
+                  </defs>
+                  <circle cx="16" cy="16" r="15" fill="url(#solG)" />
+                  <path
+                    fill="#fff"
+                    d="M9 20.5l2.2-2.2h11.4l-2.1 2.2H9zm0-4.5l2.2-2.2h11.4l-2.1 2.2H9zm11.8-4.5L23 9.5H11.6l-2.1 2.2h11.3z"
+                  />
+                </svg>
+                <span class="web3-crypto-icon__name">Solana</span>
+              </span>
+            </li>
+            <li>
+              <span class="web3-crypto-icon" title="Arbitrum">
+                <svg viewBox="0 0 32 32" aria-hidden="true" class="web3-crypto-icon__svg">
+                  <circle cx="16" cy="16" r="15" fill="#28A0F0" />
+                  <path
+                    fill="#fff"
+                    d="M16 8l6 10h-3.2l-1.2-2h-3.2L16 8zm-4.8 12h3.2l1.6-2.5h3.2L16 24l-4.8-4z"
+                  />
+                </svg>
+                <span class="web3-crypto-icon__name">Arbitrum</span>
+              </span>
+            </li>
+            <li>
+              <span class="web3-crypto-icon" title="Base">
+                <svg viewBox="0 0 32 32" aria-hidden="true" class="web3-crypto-icon__svg">
+                  <circle cx="16" cy="16" r="15" fill="#0052FF" />
+                  <path
+                    fill="#fff"
+                    d="M16 22c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z"
+                  />
+                </svg>
+                <span class="web3-crypto-icon__name">Base</span>
+              </span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section section-diagonal page-section" id="decentralization">
+        <div class="container">
+          <header class="section-header section-header--center">
+            <h2>Почему Web3 имеет смысл</h2>
+            <p class="section-lead section-lead--center">
+              Децентрализация даёт контроль, прозрачность и исполнимые правила без зависимости от единого центра
+            </p>
+          </header>
+          <div class="web3-pillar-grid">
+            <article class="web3-pillar glass">
+              <span class="web3-pillar__icon" aria-hidden="true">⬡</span>
+              <h3>Нет единой точки контроля</h3>
+              <p>
+                Нет единой точки отказа. Правила задаются кодом, а изменения прозрачны и управляемы
+              </p>
+            </article>
+            <article class="web3-pillar glass">
+              <span class="web3-pillar__icon" aria-hidden="true">◎</span>
+              <h3>Собственность у пользователя</h3>
+              <p>
+                Пользователь владеет своими активами и данными, а продукт не привязан к одной платформе или провайдеру
+              </p>
+            </article>
+            <article class="web3-pillar glass">
+              <span class="web3-pillar__icon" aria-hidden="true">✓</span>
+              <h3>Проверяемое исполнение</h3>
+              <p>
+                Все операции прозрачны и проверяемы. Системе можно доверять на основе данных, а не обещаний
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-split page-section" id="what-we-build">
+        <div class="container">
+          <header class="section-header">
+            <h2>Что создаём</h2>
+            <p class="section-lead">
+              От запуска токенов до полноценных протокольных систем. Проектируем под реальное использование, аудит и долгий рост
+            </p>
+          </header>
+
+          <div class="web3-build-grid">
+            <article class="web3-card web3-card--accent glass hover-lift">
+              <div class="web3-card__icon-wrap" aria-hidden="true">
+                <svg class="web3-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                    d="M4 7h16M4 12h10M4 17h6"
+                  />
+                  <circle cx="18" cy="12" r="3" stroke-width="1.75" />
+                </svg>
+              </div>
+              <h3>Смарт-контракты</h3>
+              <p class="web3-card__desc">
+                Безопасные смарт-контракты с понятной структурой, возможностью апгрейда и полным контролем над правами
+              </p>
+            </article>
+
+            <article class="web3-card web3-card--accent-b glass hover-lift">
+              <div class="web3-card__icon-wrap" aria-hidden="true">
+                <svg class="web3-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <circle cx="12" cy="12" r="9" stroke-width="1.75" />
+                  <path stroke-width="1.75" d="M12 7v10M8 10h8M8 14h8" />
+                </svg>
+              </div>
+              <h3>Токены и токеномика</h3>
+              <p class="web3-card__desc">
+                Токен-модели с понятной экономикой, vesting-механикой и мотивацией, работающей на долгосрочный рост
+              </p>
+            </article>
+
+            <article class="web3-card web3-card--accent-c glass hover-lift">
+              <div class="web3-card__icon-wrap" aria-hidden="true">
+                <svg class="web3-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <rect x="4" y="4" width="16" height="16" rx="2" stroke-width="1.75" />
+                  <path stroke-width="1.75" d="M9 9h6v6H9z" />
+                </svg>
+              </div>
+              <h3>DApps и кошельки</h3>
+              <p class="web3-card__desc">
+                DApp-интерфейсы и wallet-интеграции с безопасными транзакциями и понятным пользовательским опытом
+              </p>
+            </article>
+
+            <article class="web3-card web3-card--accent-d glass hover-lift">
+              <div class="web3-card__icon-wrap" aria-hidden="true">
+                <svg class="web3-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                    d="M4 18h16M6 14l4-4 4 4 4-6"
+                  />
+                </svg>
+              </div>
+              <h3>Trading и DeFi</h3>
+              <p class="web3-card__desc">
+                Trading- и DeFi-системы с автоматизацией, интеграциями и встроенным контролем рисков
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-diagonal-reverse page-section" id="chart">
+        <div class="container">
+          <header class="section-header section-header--center">
+            <h2>Рынок двигается быстро. Продукт должен успевать</h2>
+            <p class="section-lead section-lead--center">
+              Делаем системы, которые выдерживают нагрузку и стабильно работают в реальных рыночных условиях
+            </p>
+          </header>
+          <div class="web3-chart-card glass">
+            <div class="web3-chart-card__head">
+              <span class="web3-chart-card__pair mono">ETH / USD · demo</span>
+              <span class="web3-chart-card__badge">24ч</span>
+            </div>
+            <div class="web3-chart-card__canvas-wrap">
+              <canvas id="web3-chart-canvas" aria-label="Иллюстративный график ценовой активности"></canvas>
+            </div>
+            <p class="web3-chart-card__footnote mono">
+              Иллюстративный график — не инвестиционная рекомендация и не live market data.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section page-section" id="use-cases">
+        <div class="container">
+          <header class="section-header section-header--center">
+            <h2>Для кого это</h2>
+            <p class="section-lead section-lead--center">
+              Для команд, которым нужен надёжный и предсказуемый Web3-продукт, готовый к реальным пользователям
+            </p>
+          </header>
+
+          <div class="usecases-grid">
+            <article class="usecase-card glass">
+              <h3>Стартапы</h3>
+              <p>
+                Быстро запускаем токен или MVP с понятным планом масштабирования и подготовки к аудиту
+              </p>
+            </article>
+            <article class="usecase-card glass">
+              <h3>Протоколы</h3>
+              <p>
+                Расширяем протокол новыми модулями и интеграциями, которые остаются стабильными после апгрейдов
+              </p>
+            </article>
+            <article class="usecase-card glass">
+              <h3>Трейдеры и desks</h3>
+              <p>
+                Автоматизация и интеграции с прозрачным управлением рисками и полной видимостью операций
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section page-section" id="stack">
+        <div class="container">
+          <header class="section-header">
+            <h2>Стек</h2>
+            <p class="section-lead">
+              Подбираем технологии под продукт, риски и цели, а не ради модных слов
+            </p>
+          </header>
+
+          <div class="stack-grid glass web3-stack-wide">
+            <div class="stack-item">Solidity · Foundry · Hardhat</div>
+            <div class="stack-item">EVM · L2s · cross-chain messaging</div>
+            <div class="stack-item">ethers.js · viem · Web3Auth</div>
+            <div class="stack-item">The Graph · subsquid · custom indexers</div>
+            <div class="stack-item">OpenZeppelin · audits · formal review</div>
+            <div class="stack-item">Safe · multisig · timelocks</div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="section section-split page-section"
+        id="ai-power"
+        data-pipeline-typewriter
+      >
+        <div class="container">
+          <header class="section-header">
+            <h2 class="pipeline-tw-heading">Никакой магии. Только понятная архитектура</h2>
+            <p class="section-lead pipeline-tw-lead">
+              Строим системы, которые можно проверить, понять и масштабировать без хаоса
+            </p>
+          </header>
+          <div class="pipeline-wrap glass">
+            <div class="pipeline-light" aria-hidden="true"></div>
+            <div class="pipeline" role="list">
+              <span class="pipeline-step" role="listitem">Исследование</span>
+              <span class="pipeline-step" role="listitem">Архитектура</span>
+              <span class="pipeline-step" role="listitem">Контракты</span>
+              <span class="pipeline-step" role="listitem">Тестнет</span>
+              <span class="pipeline-step" role="listitem">Мейннет</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-final page-section" id="cta">
+        <div class="container final-cta glass web3-final-cta">
+          <h2>Запустим ваш Web3-продукт</h2>
+          <p class="final-cta__lead">
+            Расскажите, что вы строите, и мы вернёмся с понятной архитектурой, сроками и следующими шагами
+          </p>
+          <button type="button" class="btn btn-glass" data-cw-start>Обсудить проект</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <span>© 2026 D-Art</span>
+        <div class="footer-links">
+          <a href="index.html">Главная</a>
+          <a href="web-development.html">Web</a>
+          <a href="ai-development.html">AI</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script
+      src="contact-widget.js"
+      defer
+      data-telegram-url="https://t.me/"
+    ></script>
+  </body>
+</html>

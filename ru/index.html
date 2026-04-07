@@ -1,0 +1,339 @@
+﻿<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>D-Art | Web, Web3 и AI-разработка</title>
+    <meta
+      name="description"
+      content="D-Art — digital-студия: Web, Web3 и AI-разработка для быстрого запуска, роста и масштабирования продукта."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="contact-widget.css" />
+  </head>
+  <body>
+    <div class="site-bg-orb orb-1" data-parallax></div>
+    <div class="site-bg-orb orb-2" data-parallax></div>
+
+    <header class="topbar glass" id="topbar">
+      <a href="#hero" class="brand">D-Art</a>
+      <button
+        type="button"
+        class="nav-toggle"
+        id="nav-toggle"
+        aria-label="Открыть меню"
+        aria-expanded="false"
+        aria-controls="site-nav"
+      >
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+      <nav class="nav" id="site-nav">
+        <a href="index.html" aria-current="page">Главная</a>
+        <a href="web-development.html">Web</a>
+        <a href="web3-development.html">Web3</a>
+        <a href="ai-development.html">AI-разработка</a>
+        <div class="lang-switch" role="group" aria-label="Язык">
+          <a href="../index.html" class="lang-switch__link" hreflang="en">EN</a>
+          <span class="lang-switch__sep" aria-hidden="true">·</span>
+          <a href="index.html" class="lang-switch__link lang-switch__link--active" hreflang="ru">RU</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero section" id="hero">
+        <!-- Фон — анимированный CSS-градиент (внешнее видео с Coverr давало 404). Свой loop: положите media/hero.mp4 и раскомментируйте блок video ниже. -->
+        <canvas class="hero-particles" id="hero-particles" aria-hidden="true"></canvas>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <p class="kicker">Цифровые продукты</p>
+          <h1 class="hero-title">
+            <span class="hero-title-line">D-<span class="animated-gradient-text">Art</span></span>
+          </h1>
+          <p class="subtitle">
+            Web, Web3 и AI-решения от идеи до запуска.
+          </p>
+          <p class="description">
+            Создаём системы, которые двигают бизнес вперёд, а не просто «работают».
+          </p>
+          <button type="button" class="btn btn-glass" data-cw-start>Обсудить проект</button>
+        </div>
+      </section>
+      
+      <section class="web3-tx-river" aria-hidden="true">
+        <div class="web3-tx-river__fade web3-tx-river__fade--left"></div>
+        <div class="web3-tx-river__fade web3-tx-river__fade--right"></div>
+      
+        <div class="web3-tx-river__row">
+          <div class="web3-tx-river__track">
+            <span class="mono">
+              Рост • Автоматизация • Скорость • Выручка • Масштаб • Системы •
+            </span>
+            <span class="mono">
+              Рост • Автоматизация • Скорость • Выручка • Масштаб • Системы •
+            </span>
+          </div>
+        </div>
+      
+        <div class="web3-tx-river__row web3-tx-river__row--b">
+          <div class="web3-tx-river__track">
+            <span class="mono">
+              Рост • Автоматизация • Скорость • Выручка • Масштаб • Системы •
+            </span>
+            <span class="mono">
+              Рост • Автоматизация • Скорость • Выручка • Масштаб • Системы •
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-diagonal" id="services">
+        <div class="container">
+          <header class="section-header">
+            <h2>Что создаём</h2>
+            <p class="section-lead">
+              Разрабатываем продукт под ключ: от идеи до системы, готовой к росту
+            </p>
+          </header>
+          <div class="services-grid">
+            <a href="web-development.html" class="service-card glass hover-lift">
+              <h3>Web-платформы</h3>
+              <p>Сайты и платформы, которые помогают привлекать клиентов, продавать и масштабировать бизнес</p>
+            </a>
+            <a href="web3-development.html" class="service-card glass hover-lift">
+              <h3>Web3-системы</h3>
+              <p>Web3-продукты, смарт-контракты и инфраструктура, рассчитанные на реальных пользователей и ликвидность</p>
+            </a>
+            <a href="ai-development.html" class="service-card glass hover-lift">
+              <h3>AI-разработка</h3>
+              <p>AI-системы и автоматизация, которые снижают издержки, экономят время команды и ускоряют рост</p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+  
+      <section class="section section-split" id="approach">
+        <div class="container">
+          <header class="section-header">
+            <h2>Как работаем</h2>
+            <p class="section-lead">
+              Прозрачный процесс, высокая скорость и фокус на бизнес-результате.
+            </p>
+          </header>
+          <div class="approach-grid">
+            <article class="approach-item glass hover-lift">
+              <span class="icon-glow" aria-hidden="true"></span>
+              <h3>Скорость</h3>
+              <p>Используем AI, чтобы сокращать сроки и бюджет без потери качества</p>
+            </article>
+            <article class="approach-item glass hover-lift">
+              <span class="icon-glow" aria-hidden="true"></span>
+              <h3>Экономика</h3>
+              <p>Меньше лишних затрат, больше ресурса на то, что реально влияет на рост</p>
+            </article>
+            <article class="approach-item glass hover-lift">
+              <span class="icon-glow" aria-hidden="true"></span>
+              <h3>Архитектура</h3>
+              <p>Сразу проектируем систему так, чтобы она выдерживала масштаб и новые задачи</p>
+            </article>
+            <article class="approach-item glass hover-lift">
+              <span class="icon-glow" aria-hidden="true"></span>
+              <h3>Результат</h3>
+              <p>Смотрим на метрики, которые важны бизнесу: пользователи, выручка, скорость, эффективность</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-diagonal-reverse" id="ai-speed">
+        <div class="container">
+          <header class="section-header">
+            <h2>Скорость даёт преимущество</h2>
+            <p class="section-lead">
+              Передвиньте слайдер и сравните сроки и бюджет классической разработки и AI-ускоренного подхода
+            </p>
+          </header>
+          <div class="ai-speed-panel glass">
+            <div class="ai-speed-slider-head">
+              <span class="ai-speed-tag ai-speed-tag--muted">Без AI</span>
+              <div class="ai-speed-track-wrap">
+                <div class="ai-speed-track-glow" aria-hidden="true"></div>
+                <input
+                  type="range"
+                  class="ai-speed-range"
+                  id="ai-speed-range"
+                  min="0"
+                  max="100"
+                  value="100"
+                  aria-label="Сравнить разработку без AI и с AI"
+                />
+              </div>
+              <span class="ai-speed-tag ai-speed-tag--accent">С AI</span>
+            </div>
+            <p class="ai-speed-hint">
+              <span id="ai-speed-mode-label">AI-ускоренная разработка</span>
+              <span class="ai-speed-hint__sub" id="ai-speed-hint-text"
+                >Скорость production-уровня там, где она даёт эффект, с человеческим контролем в критичных точках</span
+              >
+            </p>
+            <div class="speed-comparison speed-comparison--slider" id="ai-speed-metrics">
+              <div class="speed-row">
+                <span class="speed-label">Срок MVP</span>
+                <div class="speed-compare">
+                  <span class="speed-before" id="metric-mvp-before">14 дней</span>
+                  <span class="speed-arrow ai-speed-arrow" aria-hidden="true">→</span>
+                  <span class="speed-after speed-after--glow" id="metric-mvp-after">3 дня</span>
+                </div>
+              </div>
+              <div class="speed-row">
+                <span class="speed-label">Полная разработка</span>
+                <div class="speed-compare">
+                  <span class="speed-before" id="metric-full-before">~3 месяца</span>
+                  <span class="speed-arrow ai-speed-arrow" aria-hidden="true">→</span>
+                  <span class="speed-after speed-after--glow" id="metric-full-after">~4 недели</span>
+                </div>
+              </div>
+              <div class="speed-row">
+                <span class="speed-label">Относительный бюджет</span>
+                <div class="speed-compare">
+                  <span class="speed-before" id="metric-cost-before">100% база</span>
+                  <span class="speed-arrow ai-speed-arrow" aria-hidden="true">→</span>
+                  <span class="speed-after speed-after--glow" id="metric-cost-after">−70% к классическому подходу</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-split" id="ai-terminal">
+        <div class="container">
+          <header class="section-header section-header--center">
+            <h2>Что работает под капотом</h2>
+            <p class="section-lead section-lead--center">
+              Как мы проектируем и выпускаем продукты: production-ready системы, а не демо
+            </p>
+          </header>
+          <div class="terminal-window glass">
+            <div class="terminal-window__chrome">
+              <span class="terminal-window__dots" aria-hidden="true"
+                ><i></i><i></i><i></i
+              ></span>
+              <span class="terminal-window__title">d-art — ai pipeline</span>
+              <span class="terminal-window__badge">В РАБОТЕ</span>
+            </div>
+            <div class="terminal-window__body">
+              <pre class="terminal-window__pre" id="terminal-typing" aria-live="polite"
+                ><code id="terminal-code"></code><span class="terminal-caret"></span
+              ></pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-diagonal" id="dev-compare">
+        <div class="container">
+          <header class="section-header section-header--center">
+            <h2>Классическая разработка vs AI-ускоренная</h2>
+            <p class="section-lead section-lead--center">
+              То же качество, но быстрее и выгоднее
+            </p>
+          </header>
+          <div class="dev-compare glass dev-compare--mode-ai">
+            <div class="dev-compare__switch" role="group" aria-label="Сравнение подходов к разработке">
+              <button type="button" class="dev-compare__btn" data-compare="classic">
+                Классика
+              </button>
+              <button type="button" class="dev-compare__btn is-active" data-compare="ai">
+                AI-ускорение
+              </button>
+              <span class="dev-compare__pill" aria-hidden="true"></span>
+            </div>
+            <div class="dev-compare__grid">
+              <article class="dev-compare__card dev-compare__card--classic" data-side="classic">
+                <h3 class="dev-compare__card-title">Традиционный подход</h3>
+                <ul class="dev-compare__list">
+                  <li>Любые изменения занимают больше времени и обходятся дороже</li>
+                  <li>Ручная работа тормозит выпуск и тестирование</li>
+                  <li>Интеграции растягиваются на недели</li>
+                  <li>Качество слишком сильно зависит от ручных проверок</li>
+                </ul>
+              </article>
+              <article class="dev-compare__card dev-compare__card--ai dev-compare__card--highlight" data-side="ai">
+                <h3 class="dev-compare__card-title">AI-ускоренная разработка</h3>
+                <ul class="dev-compare__list">
+                  <li>Быстрые итерации и гибкие изменения без лишней инерции</li>
+                  <li>AI ускоряет разработку, люди отвечают за качество и финальные решения</li>
+                  <li>Непрерывная сборка, тестирование и выпуск</li>
+                  <li>Автоматизированные проверки плюс точечный экспертный контроль</li>
+                </ul>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="section section-split page-section"
+        id="ai-power"
+        data-pipeline-typewriter
+      >
+        <div class="container">
+          <header class="section-header">
+            <h2 class="pipeline-tw-heading">AI — это инструмент, а не продукт</h2>
+            <p class="section-lead pipeline-tw-lead">
+              Используем AI там, где он реально ускоряет бизнес. Контроль и ответственность остаются у людей.
+            </p>
+          </header>
+          <div class="pipeline-wrap glass">
+            <div class="pipeline-light" aria-hidden="true"></div>
+            <div class="pipeline" role="list">
+              <span class="pipeline-step" role="listitem">Идея</span>
+              <span class="pipeline-step" role="listitem">Быстрый прототип</span>
+              <span class="pipeline-step" role="listitem">Разработка</span>
+              <span class="pipeline-step" role="listitem">Запуск и масштабирование</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+
+      <section class="section section-final page-section" id="cta">
+        <div class="container final-cta glass">
+          <h2>Сделаем продукт, который работает</h2>
+          <p class="final-cta__lead">
+            Web, Web3 и AI в одном месте. От идеи до запуска. Расскажите, что хотите построить, и мы вернёмся с понятным планом, сроками и следующими шагами
+          </p>
+          <button type="button" class="btn btn-glass" data-cw-start>Обсудить проект</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <span>© 2026 D-Art</span>
+        <div class="footer-links">
+          <a href="web-development.html">Web</a>
+          <a href="web3-development.html">Web3</a>
+          <a href="ai-development.html">AI</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script
+      src="contact-widget.js"
+      defer
+      data-telegram-url="https://t.me/"
+    ></script>
+  </body>
+</html>
