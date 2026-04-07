@@ -15,6 +15,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="contact-widget.css" />
   </head>
   <body class="page-web3">
     <div class="site-bg-orb orb-1" data-parallax></div>
@@ -56,7 +57,6 @@
               <p class="subtitle page-hero__subtitle">
                 Smart contracts, tokens and DApps built for security, clarity and real liquidity. No hype, only working systems
               </p>
-              <a class="btn btn-glass" href="#cta">Start a project</a>
             </div>
           </div>
           <div class="page-hero__web3-card">
@@ -402,7 +402,7 @@
           <p class="final-cta__lead">
             Tell us what you are building. We will respond with a clear architecture, timeline and next steps
           </p>
-          <a class="btn btn-glass" href="mailto:hello@d-art.dev">Start a project</a>
+          <button type="button" class="btn btn-glass" data-cw-start>Start a project</button>
         </div>
       </section>
     </main>
@@ -413,13 +413,16 @@
         <div class="footer-links">
           <a href="index.html">Home</a>
           <a href="web-development.html">Web</a>
-          <a href="web3-development.html" aria-current="page">Web3</a>
           <a href="ai-development.html">AI</a>
-          <a href="mailto:hello@d-art.dev">Contact</a>
         </div>
       </div>
     </footer>
 
     <script src="script.js"></script>
+    <script
+      src="contact-widget.js"
+      defer
+      data-telegram-url="https://t.me/"
+    ></script>
   </body>
 </html>

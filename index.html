@@ -15,6 +15,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="contact-widget.css" />
   </head>
   <body>
     <div class="site-bg-orb orb-1" data-parallax></div>
@@ -59,9 +60,36 @@
           <p class="description">
             We build systems that grow your business, not just code that “works”
           </p>
-          <a class="btn btn-glass" href="#cta">Start a project</a>
+          <button type="button" class="btn btn-glass" data-cw-start>Start a project</button>
         </div>
       </section>
+      
+      <section class="web3-tx-river" aria-hidden="true">
+        <div class="web3-tx-river__fade web3-tx-river__fade--left"></div>
+        <div class="web3-tx-river__fade web3-tx-river__fade--right"></div>
+      
+        <div class="web3-tx-river__row">
+          <div class="web3-tx-river__track">
+            <span class="mono">
+              confirmed 0x7f2a…b91 · ERC-20 transfer · block 19,284,102 · 12 confirmations
+            </span>
+            <span class="mono">
+              tx 0x4a7b…e2 · batch_embed · ok · 12ms · qdrant · commit 0xd41e…03 · router_weights · signed · HITL
+            </span>
+          </div>
+        </div>
+      
+        <div class="web3-tx-river__row web3-tx-river__row--b">
+          <div class="web3-tx-river__track">
+            <span class="mono">
+              conversion +42% · load time 0.9s · SEO optimized · mobile-first UX · Core Web Vitals passed
+            </span>
+            <span class="mono">
+              Growth • Automation • Performance • Revenue • Scale • Systems • 
+          </div>
+        </div>
+      </section>
+
       <section class="section section-diagonal" id="services">
         <div class="container">
           <header class="section-header">
@@ -87,22 +115,7 @@
         </div>
       </section>
 
-         <section class="marquee-auto">
-        <div class="marquee-line">
-          <div class="marquee-content">
-            <span>Growth • Automation • Performance • Revenue • Scale • Systems • </span>
-            <span>Growth • Automation • Performance • Revenue • Scale • Systems • </span>
-            </div>
-        </div>
-      
-        <div class="marquee-line reverse">
-          <div class="marquee-content">
-           <span>Growth • Automation • Performance • Revenue • Scale • Systems • </span>
-            <span>Growth • Automation • Performance • Revenue • Scale • Systems • </span>
-          </div>
-        </div>
-      </section>
-
+  
       <section class="section section-split" id="approach">
         <div class="container">
           <header class="section-header">
@@ -295,7 +308,7 @@
           <p class="final-cta__lead">
             Web, Web3 and AI in one place. From idea to launch. Tell us what you’re building. We will reply with a clear plan, timeline and next steps
           </p>
-          <a href="mailto:hello@d-art.dev" class="btn btn-glass">Start a project</a>
+          <button type="button" class="btn btn-glass" data-cw-start>Start a project</button>
         </div>
       </section>
     </main>
@@ -307,11 +320,15 @@
           <a href="web-development.html">Web</a>
           <a href="web3-development.html">Web3</a>
           <a href="ai-development.html">AI</a>
-          <a href="#cta">Contact</a>
         </div>
       </div>
     </footer>
 
     <script src="script.js"></script>
+    <script
+      src="contact-widget.js"
+      defer
+      data-telegram-url="https://t.me/"
+    ></script>
   </body>
 </html>
