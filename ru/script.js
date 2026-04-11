@@ -135,9 +135,9 @@ if (navToggle && siteNav) {
  *   HERO_PARTICLES.reducedMotionCount — сколько частиц при prefers-reduced-motion.
  *   HERO_PARTICLES.speedMul — множитель скорости падения/дрейфа (выше = интенсивнее движение).
  *   HERO_PARTICLES.alphaMin / alphaRange — базовая яркость и амплитуда мерцания (интенсивность свечения).
- * Слой целиком: в styles.css селектор .hero-particles { opacity: … }
+ * Canvas выше .hero-overlay (z-index), иначе светлая пелена перекрывает звёзды.
  *
- * Пресет: плотнее слой звёзд, чуть ярче точки; оверлей hero сглаживает контраст у текста.
+ * Пресет: плотный слой, яркость точек; текст остаётся над canvas (z-index контента).
  */
 const HERO_PARTICLES = {
   areaDivisor: 7200,

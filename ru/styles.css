@@ -218,8 +218,34 @@ body.nav-open {
 }
 
 .brand {
-  font-size: 1.05rem;
-  font-weight: 700;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0;
+  font-size: 1.08rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--text);
+}
+
+.brand__mark {
+  color: var(--text);
+}
+
+.brand__art {
+  background: var(--gradient);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shift-gradient 5s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand__art {
+    animation: none;
+    background-position: 50% 50%;
+  }
 }
 
 .nav {
@@ -267,10 +293,10 @@ body.nav-open {
   align-items: center;
   gap: 0.15rem;
   margin-left: auto;
-  padding: 0.3rem 0.45rem;
+  padding: 0.28rem 0.4rem;
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.75);
+  background: transparent;
+  border: 1px solid rgba(148, 163, 184, 0.4);
 }
 
 .lang-switch__link {
@@ -285,7 +311,7 @@ body.nav-open {
 }
 
 .lang-switch__link:hover {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.35);
   color: var(--text);
 }
 
@@ -367,9 +393,18 @@ body.nav-open {
   }
 }
 
+/* Оверлей на mesh; canvas со звёздами выше — иначе светлая пелена перекрывает частицы */
 .hero-overlay {
   position: absolute;
   inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+      130deg,
+      rgba(247, 249, 252, 0.88) 25%,
+      rgba(247, 249, 252, 0.72) 75%
+    ),
+    radial-gradient(circle at 50% 40%, rgba(167, 139, 250, 0.12), transparent 55%),
+    radial-gradient(circle at center, rgba(110, 231, 249, 0.18), transparent 65%);
 }
 
 .hero-particles {
@@ -378,20 +413,8 @@ body.nav-open {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: 1;
-  /* Слой звёзд поверх градиентного фона */
-  opacity: 0.78;
-}
-
-.hero-overlay {
-  background: linear-gradient(
-      130deg,
-      rgba(247, 249, 252, 0.88) 25%,
-      rgba(247, 249, 252, 0.72) 75%
-    ),
-    radial-gradient(circle at 50% 40%, rgba(167, 139, 250, 0.12), transparent 55%),
-    radial-gradient(circle at center, rgba(110, 231, 249, 0.18), transparent 65%);
   z-index: 2;
+  opacity: 1;
 }
 
 .hero-content {
@@ -1148,6 +1171,16 @@ body.nav-open {
   white-space: nowrap;
 }
 
+/* AI-страница: один длинный смысловой блок в карточке — перенос строк */
+.page-ai [data-pipeline-typewriter] .pipeline .pipeline-step {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+  line-height: 1.6;
+  max-width: min(40rem, 100%);
+  text-align: center;
+}
+
 .pipeline-arrow {
   font-weight: 700;
   font-size: 1.5rem;
@@ -1260,6 +1293,35 @@ body.nav-open {
   justify-content: space-between;
   gap: 1rem;
   color: #334155;
+}
+
+.footer-cr {
+  margin: 0;
+  display: inline-flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.footer-year {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #64748b;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.footer-name {
+  font-size: 0.88rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  background: var(--gradient);
+  background-size: 160% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  white-space: nowrap;
 }
 
 .footer-links {
@@ -1517,18 +1579,46 @@ body.nav-open {
   }
 
   .footer-inner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .footer-cr {
+    flex-wrap: nowrap;
+    gap: 0.28rem;
+    flex-shrink: 1;
+    min-width: 0;
+  }
+
+  .footer-year {
+    font-size: 0.68rem;
+    letter-spacing: 0.04em;
+  }
+
+  .footer-name {
+    font-size: 0.7rem;
   }
 
   .footer-links {
-    flex-wrap: wrap;
-    row-gap: 0.5rem;
-    column-gap: 0.65rem;
+    flex-wrap: nowrap;
+    gap: 0.3rem;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: flex-end;
+    flex-shrink: 0;
     max-width: 100%;
+  }
+
+  .footer-links a {
+    font-size: 0.72rem;
+    padding: 0.28rem 0.38rem;
+  }
+
+  .page-ai [data-pipeline-typewriter] .pipeline {
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 
   .usecase-card,
