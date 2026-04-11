@@ -40,13 +40,38 @@ document
 window.addEventListener(
   "scroll",
   () => {
-    const y = window.scrollY * 0.06;
+    /* Slightly stronger parallax on fixed orbs — still lightweight */
+    const y = window.scrollY * 0.075;
     parallaxNodes.forEach((node) => {
       node.style.transform = `translateY(${y}px)`;
     });
   },
   { passive: true }
 );
+
+/* ---------- Premium UI: hero readiness + section scroll reveals (CSS-driven) ---------- */
+(function initPremiumUiPolish() {
+  document.body.classList.add("site-ui-ready");
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduce) {
+    document.documentElement.classList.add("reduce-ui-motion");
+    return;
+  }
+  const sections = document.querySelectorAll(
+    "main > section:not(.hero):not(.page-hero):not(.web3-tx-river)"
+  );
+  const io = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("section-inview");
+        obs.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.07, rootMargin: "0px 0px -5% 0px" }
+  );
+  sections.forEach((sec) => io.observe(sec));
+})();
 
 const marqueeRows = document.querySelectorAll(".marquee-row");
 
@@ -112,15 +137,15 @@ if (navToggle && siteNav) {
  *   HERO_PARTICLES.alphaMin / alphaRange — базовая яркость и амплитуда мерцания (интенсивность свечения).
  * Слой целиком: в styles.css селектор .hero-particles { opacity: … }
  *
- * Пресет ниже — « editorial / luxury »: мало точек, медленно, тихое мерцание; не спорит с видео и типографикой.
+ * Пресет: плотнее слой звёзд, чуть ярче точки; оверлей hero сглаживает контраст у текста.
  */
 const HERO_PARTICLES = {
-  areaDivisor: 15000,
-  maxCount: 64,
-  reducedMotionCount: 22,
+  areaDivisor: 7200,
+  maxCount: 120,
+  reducedMotionCount: 40,
   speedMul: 0.52,
-  alphaMin: 0.07,
-  alphaRange: 0.32,
+  alphaMin: 0.1,
+  alphaRange: 0.38,
 };
 
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -1212,3 +1237,5 @@ initPipelineTypewriter();
 initWeb3ChainCanvas();
 initWeb3ChartCanvas();
 initWeb3HeroBlock();
+
+/* Contact widget loads via contact-widget.js (defer) with data-api-url — no init here */

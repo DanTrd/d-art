@@ -6,8 +6,16 @@
   --gradient: linear-gradient(135deg, #6ee7f9, #a78bfa, #f472b6);
   --radius-lg: 24px;
   --radius-md: 18px;
+  /* Layered shadows — softer ambient + subtle tint */
   --shadow-soft: 0 12px 35px rgba(15, 23, 42, 0.09);
+  --shadow-elevated:
+    0 2px 4px rgba(15, 23, 42, 0.04),
+    0 12px 28px rgba(15, 23, 42, 0.07),
+    0 28px 56px -16px rgba(167, 139, 250, 0.14);
   --shadow-glow: 0 18px 45px rgba(167, 139, 250, 0.28);
+  --shadow-glow-tight: 0 8px 28px rgba(167, 139, 250, 0.22), 0 2px 8px rgba(110, 231, 249, 0.12);
+  --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 0.38s;
 }
 
 * {
@@ -21,7 +29,9 @@ html {
 body {
   margin: 0;
   font-family: "Inter", sans-serif;
-  background: radial-gradient(circle at 20% 10%, #ffffff 0%, var(--bg) 45%),
+  background:
+    radial-gradient(ellipse 120% 80% at 50% -20%, rgba(167, 139, 250, 0.06), transparent 50%),
+    radial-gradient(circle at 20% 10%, #ffffff 0%, var(--bg) 45%),
     var(--bg);
   color: var(--text);
   overflow-x: hidden;
@@ -57,6 +67,11 @@ a {
 .section {
   position: relative;
   padding: clamp(5.5rem, 10vw, 7.5rem) 0;
+}
+
+/* Subtle separation between major bands (structure unchanged) */
+.section + .section {
+  border-top: 1px solid rgba(15, 23, 42, 0.04);
 }
 
 h1,
@@ -98,22 +113,44 @@ h2 {
 }
 
 .glass {
-  background: rgba(255, 255, 255, 0.52);
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  background: linear-gradient(
+    165deg,
+    rgba(255, 255, 255, 0.58) 0%,
+    rgba(255, 255, 255, 0.42) 55%,
+    rgba(248, 250, 252, 0.38) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.82);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  box-shadow: var(--shadow-soft);
+  box-shadow: var(--shadow-soft), inset 0 1px 0 rgba(255, 255, 255, 0.65);
+  transition:
+    transform var(--dur-fast) var(--ease-premium),
+    box-shadow var(--dur-fast) var(--ease-premium),
+    border-color 0.3s ease;
 }
 
 .hover-lift {
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  transition:
+    transform var(--dur-fast) var(--ease-premium),
+    box-shadow var(--dur-fast) var(--ease-premium),
+    border-color 0.3s ease;
+  will-change: transform;
 }
 
 @media (hover: hover) and (pointer: fine) {
   .hover-lift:hover {
-    transform: translateY(-6px) scale(1.008);
-    box-shadow: var(--shadow-glow);
+    transform: translateY(-7px) scale(1.012);
+    box-shadow: var(--shadow-elevated);
     border-color: rgba(255, 255, 255, 0.95);
+  }
+
+  /* Cards that ship without .hover-lift — same premium lift */
+  .usecase-card.glass:hover,
+  .web3-pillar.glass:hover,
+  .web3-chart-card.glass:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: var(--shadow-elevated);
+    border-color: rgba(255, 255, 255, 0.92);
   }
 }
 
@@ -126,18 +163,31 @@ h2 {
   opacity: 0.35;
   z-index: -1;
   pointer-events: none;
+  /* Opacity-only drift — scroll parallax still sets transform inline */
+  animation: orb-breathe 18s ease-in-out infinite alternate;
+}
+
+@keyframes orb-breathe {
+  from {
+    opacity: 0.28;
+  }
+  to {
+    opacity: 0.42;
+  }
 }
 
 .orb-1 {
   top: -100px;
   left: -100px;
   background: #6ee7f9;
+  animation-delay: 0s;
 }
 
 .orb-2 {
   right: -80px;
   bottom: 20%;
   background: #f472b6;
+  animation-delay: -7s;
 }
 
 .topbar {
@@ -330,7 +380,7 @@ body.nav-open {
   pointer-events: none;
   z-index: 1;
   /* Слой звёзд поверх градиентного фона */
-  opacity: 0.58;
+  opacity: 0.78;
 }
 
 .hero-overlay {
@@ -404,24 +454,33 @@ body.nav-open {
   border-radius: var(--radius-md);
   padding: 0.95rem 1.4rem;
   font-weight: 600;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform var(--dur-fast) var(--ease-premium),
+    box-shadow var(--dur-fast) var(--ease-premium),
+    filter 0.25s ease,
+    background 0.25s ease;
 }
 
 .btn-glass {
-  border: 1px solid rgba(255, 255, 255, 0.85);
-  background: linear-gradient(160deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.34));
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.88);
+  background: linear-gradient(155deg, rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.38));
+  box-shadow:
+    0 10px 28px rgba(15, 23, 42, 0.1),
+    0 2px 6px rgba(167, 139, 250, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.75);
 }
 
 @media (hover: hover) and (pointer: fine) {
   .btn-glass:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 35px rgba(167, 139, 250, 0.35);
+    transform: translateY(-3px);
+    filter: brightness(1.03);
+    box-shadow: var(--shadow-glow-tight);
   }
 }
 
 .btn-glass:active {
-  transform: scale(0.98);
+  transform: scale(0.97) translateY(0);
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.12);
 }
 
 .section-diagonal::before,
@@ -486,7 +545,12 @@ body.nav-open {
 }
 
 .section-split {
-  background: linear-gradient(180deg, transparent 0%, var(--bg-secondary) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(238, 242, 247, 0.35) 0%,
+    var(--bg-secondary) 48%,
+    rgba(238, 242, 247, 0.85) 100%
+  );
 }
 
 .approach-grid {
@@ -519,6 +583,16 @@ body.nav-open {
   background: var(--gradient);
   filter: blur(0.2px);
   box-shadow: 0 10px 25px rgba(110, 231, 249, 0.5);
+  transition:
+    transform var(--dur-fast) var(--ease-premium),
+    box-shadow 0.35s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .approach-item:hover .icon-glow {
+    transform: scale(1.06) rotate(-2deg);
+    box-shadow: 0 12px 28px rgba(167, 139, 250, 0.45);
+  }
 }
 
 .approach-item h3 {
@@ -2791,6 +2865,16 @@ z-index: 1;
   margin-bottom: 1rem;
   flex-shrink: 0;
   box-shadow: 0 10px 30px rgba(167, 139, 250, 0.28);
+  transition:
+    transform var(--dur-fast) var(--ease-premium),
+    box-shadow 0.35s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .ai-feature-card:hover .ai-feature-card__mark {
+    transform: scale(1.07) rotate(-2deg);
+    box-shadow: 0 14px 34px rgba(167, 139, 250, 0.42);
+  }
 }
 
 .ai-feature-card__mark--b {
@@ -3397,5 +3481,187 @@ z-index: 1;
     grid-column: auto;
     max-width: none;
     justify-self: stretch;
+  }
+}
+
+/* =============================================================================
+   Premium polish — micro-interactions, scroll reveals, hero entrance
+   (layout/structure unchanged; respects prefers-reduced-motion via .reduce-ui-motion)
+   ============================================================================= */
+
+@keyframes dart-fade-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+html:not(.reduce-ui-motion) body.site-ui-ready .hero .hero-content > *,
+html:not(.reduce-ui-motion) body.site-ui-ready .page-hero__inner > * {
+  animation: dart-fade-up 0.62s var(--ease-premium) both;
+}
+
+html:not(.reduce-ui-motion) body.site-ui-ready .hero .hero-content > *:nth-child(1),
+html:not(.reduce-ui-motion) body.site-ui-ready .page-hero__inner > *:nth-child(1) {
+  animation-delay: 0.03s;
+}
+html:not(.reduce-ui-motion) body.site-ui-ready .hero .hero-content > *:nth-child(2),
+html:not(.reduce-ui-motion) body.site-ui-ready .page-hero__inner > *:nth-child(2) {
+  animation-delay: 0.09s;
+}
+html:not(.reduce-ui-motion) body.site-ui-ready .hero .hero-content > *:nth-child(3),
+html:not(.reduce-ui-motion) body.site-ui-ready .page-hero__inner > *:nth-child(3) {
+  animation-delay: 0.15s;
+}
+html:not(.reduce-ui-motion) body.site-ui-ready .hero .hero-content > *:nth-child(4),
+html:not(.reduce-ui-motion) body.site-ui-ready .page-hero__inner > *:nth-child(4) {
+  animation-delay: 0.2s;
+}
+html:not(.reduce-ui-motion) body.site-ui-ready .hero .hero-content > *:nth-child(5),
+html:not(.reduce-ui-motion) body.site-ui-ready .page-hero__inner > *:nth-child(5) {
+  animation-delay: 0.25s;
+}
+html:not(.reduce-ui-motion) body.site-ui-ready .hero .hero-content > *:nth-child(6),
+html:not(.reduce-ui-motion) body.site-ui-ready .page-hero__inner > *:nth-child(6) {
+  animation-delay: 0.3s;
+}
+
+/* Subtle focal glow behind hero copy (does not affect layout) */
+.hero .hero-content::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 35%;
+  width: min(120%, 36rem);
+  height: min(70%, 14rem);
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    ellipse at center,
+    rgba(167, 139, 250, 0.14) 0%,
+    rgba(110, 231, 249, 0.06) 45%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.85;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-bg-orb {
+    animation: none;
+    opacity: 0.34;
+  }
+
+  body.site-ui-ready .hero .hero-content > *,
+  body.site-ui-ready .page-hero__inner > * {
+    animation: none !important;
+  }
+}
+
+html.reduce-ui-motion main > section:not(.hero):not(.page-hero) .glass,
+html.reduce-ui-motion main > section:not(.hero):not(.page-hero) .section-header {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+/* Scroll-driven section reveals: content below the fold */
+main > section:not(.hero):not(.page-hero):not(.section-inview) .glass,
+main > section:not(.hero):not(.page-hero):not(.section-inview) .section-header {
+  opacity: 0;
+  transform: translate3d(0, 20px, 0);
+  transition:
+    opacity 0.45s var(--ease-premium),
+    transform 0.5s var(--ease-premium);
+}
+
+main > section:not(.hero):not(.page-hero).section-inview .glass,
+main > section:not(.hero):not(.page-hero).section-inview .section-header {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Staggered grid reveals (fast, responsive steps) */
+main > section.section-inview .services-grid > *:nth-child(1),
+main > section.section-inview .approach-grid > *:nth-child(1),
+main > section.section-inview .types-grid > *:nth-child(1),
+main > section.section-inview .usecases-grid > *:nth-child(1),
+main > section.section-inview .work-grid > *:nth-child(1),
+main > section.section-inview .web3-pillar-grid > *:nth-child(1),
+main > section.section-inview .web3-build-grid > *:nth-child(1),
+main > section.section-inview .ai-build-grid > *:nth-child(1),
+main > section.section-inview .integrations-build-grid > *:nth-child(1) {
+  transition-delay: 0.03s;
+}
+main > section.section-inview .services-grid > *:nth-child(2),
+main > section.section-inview .approach-grid > *:nth-child(2),
+main > section.section-inview .types-grid > *:nth-child(2),
+main > section.section-inview .usecases-grid > *:nth-child(2),
+main > section.section-inview .work-grid > *:nth-child(2),
+main > section.section-inview .web3-pillar-grid > *:nth-child(2),
+main > section.section-inview .web3-build-grid > *:nth-child(2),
+main > section.section-inview .ai-build-grid > *:nth-child(2),
+main > section.section-inview .integrations-build-grid > *:nth-child(2) {
+  transition-delay: 0.08s;
+}
+main > section.section-inview .services-grid > *:nth-child(3),
+main > section.section-inview .approach-grid > *:nth-child(3),
+main > section.section-inview .types-grid > *:nth-child(3),
+main > section.section-inview .usecases-grid > *:nth-child(3),
+main > section.section-inview .work-grid > *:nth-child(3),
+main > section.section-inview .web3-pillar-grid > *:nth-child(3),
+main > section.section-inview .web3-build-grid > *:nth-child(3),
+main > section.section-inview .ai-build-grid > *:nth-child(3),
+main > section.section-inview .integrations-build-grid > *:nth-child(3) {
+  transition-delay: 0.13s;
+}
+main > section.section-inview .services-grid > *:nth-child(4),
+main > section.section-inview .approach-grid > *:nth-child(4),
+main > section.section-inview .types-grid > *:nth-child(4),
+main > section.section-inview .usecases-grid > *:nth-child(4),
+main > section.section-inview .work-grid > *:nth-child(4),
+main > section.section-inview .web3-pillar-grid > *:nth-child(4),
+main > section.section-inview .web3-build-grid > *:nth-child(4),
+main > section.section-inview .ai-build-grid > *:nth-child(4),
+main > section.section-inview .integrations-build-grid > *:nth-child(4) {
+  transition-delay: 0.18s;
+}
+main > section.section-inview .types-grid > *:nth-child(5),
+main > section.section-inview .integrations-build-grid > *:nth-child(5) {
+  transition-delay: 0.23s;
+}
+main > section.section-inview .integrations-build-grid > *:nth-child(6) {
+  transition-delay: 0.28s;
+}
+
+/* Stack grids (Web3 / AI stack blocks) */
+main > section.section-inview .stack-grid > *:nth-child(1) {
+  transition-delay: 0.04s;
+}
+main > section.section-inview .stack-grid > *:nth-child(2) {
+  transition-delay: 0.09s;
+}
+main > section.section-inview .stack-grid > *:nth-child(3) {
+  transition-delay: 0.14s;
+}
+main > section.section-inview .stack-grid > *:nth-child(4) {
+  transition-delay: 0.19s;
+}
+
+/* Topbar: light lift on scroll implied by glass — subtle link motion */
+@media (hover: hover) and (pointer: fine) {
+  .topbar .nav > a {
+    transition:
+      transform 0.22s var(--ease-premium),
+      background-color 0.25s ease,
+      color 0.25s ease;
+  }
+
+  .topbar .nav > a:hover {
+    transform: translateY(-1px);
   }
 }
