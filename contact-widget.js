@@ -115,6 +115,10 @@
     var s = getWidgetScriptEl();
     if (!s || !s.getAttribute) return {};
     var out = {};
+    var so = s.getAttribute('data-api-same-origin');
+    if (so != null && so !== 'false' && so !== '0') {
+      out.useApiSameOrigin = true;
+    }
     var api = s.getAttribute('data-api-url') || s.getAttribute('data-api');
     if (api) out.apiUrl = api;
     var aid = s.getAttribute('data-agent-id');
@@ -762,6 +766,16 @@
     var winApi = global.__DART_CW_API_URL__;
     if (winApi && typeof winApi === 'string' && winApi.trim() && !cfg.apiUrl) {
       cfg.apiUrl = winApi.trim();
+    }
+
+    if (
+      cfg.useApiSameOrigin &&
+      (!cfg.apiUrl || !String(cfg.apiUrl).trim()) &&
+      global.location &&
+      global.location.origin &&
+      /^https?:/.test(global.location.protocol)
+    ) {
+      cfg.apiUrl = String(global.location.origin).replace(/\/$/, '');
     }
 
     var labels = mergeLabels(getStringsForLocale(detectSiteLocale()), opt.labels || {});

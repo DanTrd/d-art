@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI-виджет для сайта | D-Art</title>
+    <meta
+      name="description"
+      content="Онлайн-консультант на базе ИИ для сайта: отвечает клиентам 24/7, повышает конверсию и снимает нагрузку с менеджеров."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="widget-landing.css" />
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+  </head>
+  <body class="page-widget">
+    <div class="site-bg-orb orb-1" data-parallax></div>
+    <div class="site-bg-orb orb-2" data-parallax></div>
+
+    <header class="topbar glass" id="topbar">
+      <a href="index.html" class="brand"><span class="brand__mark">D-</span><span class="brand__art">Art</span></a>
+      <button
+        type="button"
+        class="nav-toggle"
+        id="nav-toggle"
+        aria-label="Открыть меню"
+        aria-expanded="false"
+        aria-controls="site-nav"
+      >
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+      <nav class="nav" id="site-nav">
+        <a href="index.html">Главная</a>
+        <a href="web-development.html">Web</a>
+        <a href="web3-development.html">Web3</a>
+        <a href="ai-development.html">AI-разработка</a>
+        <div class="lang-switch" role="group" aria-label="Язык">
+          <a href="../index.html" class="lang-switch__link" hreflang="en">EN</a>
+          <span class="lang-switch__sep" aria-hidden="true">·</span>
+          <a href="index.html" class="lang-switch__link lang-switch__link--active" hreflang="ru">RU</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero section widget-hero" id="hero">
+        <div class="widget-hero__mesh-fade" aria-hidden="true"></div>
+        <canvas class="widget-hero-mesh" id="widget-hero-mesh" aria-hidden="true"></canvas>
+        <canvas class="hero-particles" id="hero-particles" aria-hidden="true"></canvas>
+        <div class="hero-overlay widget-hero__overlay"></div>
+        <div class="widget-hero__glow-blobs" aria-hidden="true">
+          <span class="widget-hero__blob widget-hero__blob--1"></span>
+          <span class="widget-hero__blob widget-hero__blob--2"></span>
+          <span class="widget-hero__blob widget-hero__blob--3"></span>
+        </div>
+        <div class="container widget-hero__container">
+          <div class="widget-hero__grid">
+            <div class="widget-hero__copy">
+              <p class="widget-hero__kicker">
+                <span class="widget-hero__kicker-dot" aria-hidden="true"></span>
+                AI-виджет для сайта
+              </p>
+              <h1 class="widget-hero__title">
+                <span class="widget-hero__title-line">Онлайн-консультант,</span>
+                <span class="widget-hero__title-line"
+                  >который не пропускает <span class="animated-gradient-text">клиентов</span></span
+                >
+              </h1>
+              <p class="widget-hero__lead">
+                Отвечает на вопросы <strong>24/7</strong> и превращает посетителей в заявки — пока вы заняты делом или вне сети.
+              </p>
+              <p class="widget-hero__note">
+                Услуги, ремонт, медицина, окна и другие ниши: не теряйте обращения из рекламы и поиска.
+              </p>
+              <ul class="widget-hero__pills" aria-label="Ключевые свойства">
+                <li>Мгновенный ответ</li>
+                <li>Работает ночью и в выходные</li>
+                <li>Под ваш бренд</li>
+              </ul>
+              <div class="widget-hero-actions">
+                <a class="btn btn-glass widget-hero__btn-primary" href="#demo">
+                  <span class="widget-hero__btn-shine" aria-hidden="true"></span>
+                  Посмотреть демо
+                </a>
+                <a class="btn btn-glass btn-glass--quiet" href="#cta">Подключить виджет</a>
+              </div>
+            </div>
+            <div class="widget-hero__viz" aria-hidden="true">
+              <div class="widget-hero__ring" aria-hidden="true"></div>
+              <div class="widget-hero__card">
+                <div class="widget-hero__browser glass">
+                  <div class="widget-hero__browser-chrome">
+                    <span class="widget-hero__browser-dot"></span>
+                    <span class="widget-hero__browser-dot"></span>
+                    <span class="widget-hero__browser-dot"></span>
+                    <span class="widget-hero__browser-url mono">yoursite.ru</span>
+                  </div>
+                  <div class="widget-hero__browser-page">
+                    <div class="widget-hero__skeleton">
+                      <span class="widget-hero__sk-line widget-hero__sk-line--long"></span>
+                      <span class="widget-hero__sk-line"></span>
+                      <span class="widget-hero__sk-line"></span>
+                      <span class="widget-hero__sk-line widget-hero__sk-line--short"></span>
+                    </div>
+                    <div class="widget-hero__fab">
+                      <span class="widget-hero__fab-icon" aria-hidden="true"></span>
+                      <span class="widget-hero__fab-ping" aria-hidden="true"></span>
+                    </div>
+                    <div class="widget-hero__mini-chat glass">
+                      <div class="widget-hero__mini-chat-top">
+                        <span class="widget-hero__mini-dot"></span>
+                        <span>Онлайн</span>
+                      </div>
+                      <div class="widget-hero__mini-row widget-hero__mini-row--user">
+                        Здравствуйте! Нужна консультация
+                      </div>
+                      <div class="widget-hero__mini-row widget-hero__mini-row--bot">
+                        Сейчас отвечу — уточните, пожалуйста, город
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="web3-tx-river widget-marquee" aria-hidden="true">
+        <div class="web3-tx-river__fade web3-tx-river__fade--left"></div>
+        <div class="web3-tx-river__fade web3-tx-river__fade--right"></div>
+        <div class="web3-tx-river__row">
+          <div class="web3-tx-river__track">
+            <span class="mono">
+              Ответ за секунды • Заявки • Конверсия • Меньше пропущенных • 24/7 • Доверие •
+            </span>
+            <span class="mono">
+              Ответ за секунды • Заявки • Конверсия • Меньше пропущенных • 24/7 • Доверие •
+            </span>
+          </div>
+        </div>
+        <div class="web3-tx-river__row web3-tx-river__row--b">
+          <div class="web3-tx-river__track">
+            <span class="mono">
+              Лид • Чат • Быстрый ответ • Не ушёл с сайта • Запись • Продажа •
+            </span>
+            <span class="mono">
+              Лид • Чат • Быстрый ответ • Не ушёл с сайта • Запись • Продажа •
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-diagonal page-section" id="problem">
+        <div class="container">
+          <header class="section-header">
+            <h2>Почему теряются клиенты на сайте</h2>
+            <p class="section-lead">
+              Люди заходят с телефона, сравнивают и уходят — если не получили ответ сразу. Это не «мелочь», это прямые потери заявок.
+            </p>
+          </header>
+
+          <div class="widget-stat-grid">
+            <article class="widget-stat glass hover-lift">
+              <p class="widget-stat__value">60–80<span class="widget-stat__unit">%</span></p>
+              <p class="widget-stat__label">не пишут в чат, если нет быстрого ответа</p>
+            </article>
+            <article class="widget-stat glass hover-lift">
+              <p class="widget-stat__value">30–60<span class="widget-stat__unit"> сек</span></p>
+              <p class="widget-stat__label">достаточно задержки — и человек закрывает вкладку</p>
+            </article>
+            <article class="widget-stat glass hover-lift">
+              <p class="widget-stat__value">Пишут</p>
+              <p class="widget-stat__label">часто охотнее, чем звонят: чат снимает стеснение и экономит время</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-split page-section" id="demo">
+        <div class="container">
+          <header class="section-header section-header--center">
+            <h2>Как это выглядит для клиента</h2>
+            <p class="section-lead section-lead--center">
+              Диалог на сайте: сначала вопрос, затем ответ ассистента — с естественной паузой «печатает…», как у человека.
+            </p>
+          </header>
+
+          <div class="widget-chat-demo glass" id="widget-chat-demo" aria-live="polite">
+            <div class="widget-chat-demo__top">
+              <span class="widget-chat-demo__dot" aria-hidden="true"></span>
+              <span class="widget-chat-demo__dot" aria-hidden="true"></span>
+              <span class="widget-chat-demo__dot" aria-hidden="true"></span>
+              <span class="widget-chat-demo__title">Онлайн-консультант</span>
+              <span class="widget-chat-demo__badge">онлайн</span>
+            </div>
+            <div class="widget-chat-demo__body">
+              <div class="widget-chat-demo__msg widget-chat-demo__msg--user" data-widget-chat="user">
+                <span class="widget-chat-demo__role">Клиент</span>
+                <p class="widget-chat-demo__bubble">
+                  Сколько стоит ремонт под ключ квартиры 70 кв м?
+                </p>
+              </div>
+              <div class="widget-chat-demo__typing" data-widget-chat="typing" hidden>
+                <span class="widget-chat-demo__typing-label">печатает</span>
+                <span class="widget-chat-demo__typing-dots" aria-hidden="true"
+                  ><span>.</span><span>.</span><span>.</span></span
+                >
+              </div>
+              <div class="widget-chat-demo__msg widget-chat-demo__msg--bot" data-widget-chat="bot" hidden>
+                <span class="widget-chat-demo__role">Ассистент</span>
+                <p class="widget-chat-demo__bubble">
+                  <span data-widget-chat="bot-text"></span><span class="widget-chat-demo__caret" data-widget-chat="caret" hidden>|</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-diagonal page-section" id="how">
+        <div class="container">
+          <header class="section-header">
+            <h2>Как это работает</h2>
+            <p class="section-lead">Три шага — без лишней суеты на вашей стороне.</p>
+          </header>
+          <div class="approach-grid">
+            <article class="approach-item glass hover-lift">
+              <span class="icon-glow" aria-hidden="true"></span>
+              <h3><span class="widget-step-num">1</span> Подключаем виджет</h3>
+              <p>Ставим на ваш сайт аккуратно, чтобы не ломать вёрстку и скорость загрузки.</p>
+            </article>
+            <article class="approach-item glass hover-lift">
+              <span class="icon-glow" aria-hidden="true"></span>
+              <h3><span class="widget-step-num">2</span> Настраиваем ИИ</h3>
+              <p>Загружаем услуги, прайс, типовые вопросы и тон общения под ваш бренд.</p>
+            </article>
+            <article class="approach-item glass hover-lift">
+              <span class="icon-glow" aria-hidden="true"></span>
+              <h3><span class="widget-step-num">3</span> Идут ответы и заявки</h3>
+              <p>Ассистент отвечает посетителям и помогает оставить контакт, когда человек готов.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-diagonal page-section" id="loss-calc" data-widget-loss-calc>
+        <div class="container">
+          <header class="section-header section-header--center">
+            <h2>Калькулятор потерь</h2>
+            <p class="section-lead section-lead--center">
+              Наглядный пример: сколько обращений «теряется» без быстрого онлайн-ответа — даже при скромном трафике.
+            </p>
+          </header>
+
+          <div class="widget-loss glass">
+            <p class="widget-loss__tagline">
+              <strong>Каждый пропущенный вопрос = потерянный клиент.</strong>
+            </p>
+
+            <div class="widget-loss__control">
+              <div class="widget-loss__control-head">
+                <label class="widget-loss__label" for="loss-daily-slider">Посетителей в день</label>
+                <span class="widget-loss__daily mono" id="loss-daily-display">100</span>
+              </div>
+              <div class="widget-loss__slider-wrap">
+                <input
+                  type="range"
+                  class="widget-loss__slider"
+                  id="loss-daily-slider"
+                  min="20"
+                  max="500"
+                  value="100"
+                  step="10"
+                  aria-valuemin="20"
+                  aria-valuemax="500"
+                  aria-valuenow="100"
+                  aria-label="Количество посетителей сайта в день"
+                />
+                <div class="widget-loss__slider-glow" aria-hidden="true"></div>
+              </div>
+              <p class="widget-loss__hint">
+                Доля готовых задать вопрос — <strong>5–10%</strong> от визитов; без мгновенного ответа теряется до
+                <strong>70%</strong> таких обращений.
+              </p>
+            </div>
+
+            <div class="widget-loss__flow" aria-live="polite">
+              <div class="widget-loss__card widget-loss__card--wide">
+                <span class="widget-loss__card-k">Шаг 1</span>
+                <span class="widget-loss__card-num mono" id="loss-monthly-visitors">3 000</span>
+                <span class="widget-loss__card-desc">визитов за 30 дней</span>
+                <div class="widget-loss__bar-wrap">
+                  <div class="widget-loss__bar widget-loss__bar--total" id="loss-bar-total"></div>
+                </div>
+              </div>
+
+              <div class="widget-loss__arrow" aria-hidden="true">
+                <span class="widget-loss__arrow-line"></span>
+              </div>
+
+              <div class="widget-loss__card widget-loss__card--mid">
+                <span class="widget-loss__card-k">Шаг 2</span>
+                <span class="widget-loss__card-num mono" id="loss-ready-range">150–300</span>
+                <span class="widget-loss__card-desc">готовы задать вопрос (5–10%)</span>
+                <div class="widget-loss__bar-wrap">
+                  <div class="widget-loss__bar widget-loss__bar--ready" id="loss-bar-ready"></div>
+                </div>
+              </div>
+
+              <div class="widget-loss__arrow widget-loss__arrow--loss" aria-hidden="true">
+                <span class="widget-loss__arrow-line"></span>
+                <span class="widget-loss__arrow-badge">−70%</span>
+              </div>
+
+              <div class="widget-loss__card widget-loss__card--loss">
+                <span class="widget-loss__card-k">Потери</span>
+                <span class="widget-loss__card-num mono" id="loss-lost-range">105–210</span>
+                <span class="widget-loss__card-desc">потенциальных клиентов без онлайн-ответа</span>
+                <div class="widget-loss__bar-wrap">
+                  <div class="widget-loss__bar widget-loss__bar--lost" id="loss-bar-lost"></div>
+                </div>
+              </div>
+            </div>
+
+            <p class="widget-loss__foot">
+              Это реальные деньги, которые не видны в отчётах по «просмотрам» — только в недополученных заявках.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-split page-section" id="benefits">
+        <div class="container">
+          <header class="section-header section-header--center">
+            <h2>Что вы получаете</h2>
+            <p class="section-lead section-lead--center">
+              Фокус на заявках и спокойствии команды: меньше «пропало», больше «записали».
+            </p>
+          </header>
+          <ul class="widget-benefits glass">
+            <li>Не пропускает обращения, когда менеджеры заняты или не в сети</li>
+            <li>Работает круглосуточно, в выходные и праздники</li>
+            <li>Отвечает сразу — без ожидания «когда освободится оператор»</li>
+            <li>Снижает нагрузку на сотрудников: типовые вопросы закрывает виджет</li>
+            <li>Помогает конверсии сайта: человек получил ответ — проще дойти до заявки</li>
+          </ul>
+          <p class="widget-benefits-foot">
+            Даже <strong>один дополнительный клиент в день</strong> часто полностью окупает внедрение — особенно в услугах с высоким чеком.
+          </p>
+        </div>
+      </section>
+
+      <section class="section page-section" id="pricing">
+        <div class="container">
+          <header class="section-header">
+            <h2>Стоимость</h2>
+            <p class="section-lead">
+              Мы не продаём «коробку ради коробки»: цена зависит от задач, объёма ответов и глубины настройки под вашу нишу.
+            </p>
+          </header>
+          <div class="widget-pricing glass">
+            <p class="widget-pricing__intro">Ориентир по бюджету:</p>
+            <p class="widget-pricing__range">обычно <strong>от 2 000 до 10 000 ₽</strong> в месяц</p>
+            <p class="widget-pricing__accent">В большинстве случаев окупается уже в первые недели — если на сайт приходит живой трафик.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-final page-section" id="cta">
+        <div class="container final-cta glass">
+          <h2>Попробуйте на своём сайте</h2>
+          <p class="final-cta__lead">
+            Расскажите нишу и адрес сайта — предложим формат подключения и сценарии ответов.
+          </p>
+          <a class="btn btn-glass" href="https://t.me/" target="_blank" rel="noopener noreferrer">Подключить виджет</a>
+          <p class="widget-cta-sub">Мы поможем настроить под ваш бизнес</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <p class="footer-cr">
+          <span class="footer-year">© 2026</span>
+          <span class="footer-name">D-Art</span>
+        </p>
+        <div class="footer-links">
+          <a href="index.html">Главная</a>
+          <a href="web-development.html">Web</a>
+          <a href="web3-development.html">Web3</a>
+          <a href="ai-development.html">AI</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="widget-landing.js" defer></script>
+  </body>
+</html>

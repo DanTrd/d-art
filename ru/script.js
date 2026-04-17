@@ -73,6 +73,37 @@ window.addEventListener(
   sections.forEach((sec) => io.observe(sec));
 })();
 
+/* Selected work (#work): отдельный reveal — иначе глобальный `.section-inview .glass { opacity:1 }` снимает скрытое состояние в один кадр и transition не виден */
+(function initWorkCardsScrollReveal() {
+  const section = document.querySelector("body.page-web main section#work[data-work-cards-reveal]");
+  if (!section) return;
+
+  const show = () => section.classList.add("work-cards--visible");
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    show();
+    return;
+  }
+  if (document.documentElement.classList.contains("reduce-ui-motion")) {
+    show();
+    return;
+  }
+
+  const io = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        obs.unobserve(entry.target);
+        requestAnimationFrame(() => {
+          requestAnimationFrame(show);
+        });
+      });
+    },
+    { threshold: 0.1, rootMargin: "0px 0px -8% 0px" }
+  );
+  io.observe(section);
+})();
+
 const marqueeRows = document.querySelectorAll(".marquee-row");
 
 window.addEventListener("scroll", () => {
@@ -1127,6 +1158,10 @@ const initPipelineTypewriter = () => {
   if (!titleText || !stepTexts.length) return;
 
   let runToken = 0;
+  /** Один успешный прогон — дальше только статика (без цикла) */
+  let hasPlayed = false;
+  /** Уже запускали печать (хотя бы раз); иначе первый stop() при «секция ниже экрана» ломал бы старт */
+  let runStarted = false;
   const timeouts = [];
 
   const clearAllTimeouts = () => {
@@ -1167,46 +1202,43 @@ const initPipelineTypewriter = () => {
     stepEls.forEach((el) => el.classList.remove("is-typing"));
   };
 
-  const runLoop = async (token) => {
-    while (token === runToken) {
-      heading.textContent = "";
-      lead.textContent = "";
-      stepEls.forEach((el) => {
-        el.textContent = "";
-      });
+  /** Один прогон: заголовок → лид → шаги, без повтора и без soft-hide */
+  const runOnce = async (token) => {
+    heading.textContent = "";
+    lead.textContent = "";
+    stepEls.forEach((el) => {
+      el.textContent = "";
+    });
 
-      await typeInto(heading, titleText, token);
-      if (token !== runToken) break;
-      await wait(260);
-      await typeInto(lead, leadText, token);
-      if (token !== runToken) break;
-      await wait(360);
+    await typeInto(heading, titleText, token);
+    if (token !== runToken) return;
+    await wait(260);
+    await typeInto(lead, leadText, token);
+    if (token !== runToken) return;
+    await wait(360);
 
-      for (let s = 0; s < stepEls.length; s++) {
-        if (token !== runToken) break;
-        await typeInto(stepEls[s], stepTexts[s], token);
-        if (token !== runToken) break;
-        await wait(220);
-      }
-      if (token !== runToken) break;
-
-      await wait(2100);
-      if (token !== runToken) break;
-
-      section.classList.add("pipeline-tw--soft-hide");
-      await wait(400);
-      if (token !== runToken) break;
-      section.classList.remove("pipeline-tw--soft-hide");
-      await wait(160);
+    for (let s = 0; s < stepEls.length; s++) {
+      if (token !== runToken) return;
+      await typeInto(stepEls[s], stepTexts[s], token);
+      if (token !== runToken) return;
+      await wait(220);
     }
+    if (token !== runToken) return;
+    hasPlayed = true;
   };
 
   const start = () => {
+    if (hasPlayed) {
+      restoreStatic();
+      section.classList.remove("pipeline-tw--soft-hide");
+      return;
+    }
+    runStarted = true;
     runToken++;
     const token = runToken;
     clearAllTimeouts();
     section.classList.remove("pipeline-tw--soft-hide");
-    runLoop(token);
+    runOnce(token);
   };
 
   const stop = () => {
@@ -1214,6 +1246,9 @@ const initPipelineTypewriter = () => {
     clearAllTimeouts();
     section.classList.remove("pipeline-tw--soft-hide");
     restoreStatic();
+    if (runStarted) {
+      hasPlayed = true;
+    }
   };
 
   const io = new IntersectionObserver(

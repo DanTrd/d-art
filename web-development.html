@@ -309,34 +309,41 @@
         </div>
       </section>
 
-      <section class="section section-diagonal-reverse page-section" id="work">
+      <section
+        class="section section-diagonal-reverse page-section"
+        id="work"
+        data-work-cards-reveal
+      >
         <div class="container">
           <header class="section-header">
             <h2>Selected work</h2>
             <p class="section-lead">
-              Selected projects. Full portfolio available on request
+              A few representative cases focused on real business challenges and measurable results
             </p>
           </header>
           <div class="work-grid">
             <article class="work-card glass hover-lift">
+              <h3>Trading Platform</h3>
+              <p>
+                A crypto trading platform supporting spot and futures markets, with management via a web interface and Telegram bot. Includes TradingView integrations, automated trading, a referral system, subscriptions, and crypto payments.
+              </p>
+            </article>
+            <article class="work-card glass hover-lift">
               <h3>Aurora Analytics</h3>
-              <p>Marketing website and in app flows for a B2B SaaS product. Built for conversion</p>
-              <a class="work-card__link" href="mailto:hello@d-art.dev?subject=Case%20study%3A%20Aurora">View case study →</a>
+              <p>
+                Website and in-product user flows for a B2B SaaS platform, designed to improve conversion and user activation.
+              </p>
             </article>
             <article class="work-card glass hover-lift">
               <h3>Northline Commerce</h3>
-              <p>Headless e commerce storefront with fast catalog and mobile optimized checkout</p>
-              <a class="work-card__link" href="mailto:hello@d-art.dev?subject=Case%20study%3A%20Northline">View case study →</a>
-            </article>
-            <article class="work-card glass hover-lift">
-              <h3>Helix Portal</h3>
-              <p>Customer portal with roles and CRM integration. Fewer support requests, clearer user experience</p>
-              <a class="work-card__link" href="mailto:hello@d-art.dev?subject=Case%20study%3A%20Helix">View case study →</a>
+              <p>
+                An e-commerce platform with a fast product catalog and a mobile-optimized checkout flow, built to maximize sales.
+              </p>
             </article>
             <article class="work-card glass hover-lift">
               <h3>Signal Launch</h3>
-              <p>Landing system with reusable blocks for fast campaign launches without development delays</p>
-              <a class="work-card__link" href="mailto:hello@d-art.dev?subject=Case%20study%3A%20Signal">View case study →</a>
+              <p>
+                A landing page system built on reusable components, enabling fast campaign launches without development delays.              </p>
             </article>
           </div>
         </div>
@@ -366,27 +373,7 @@
         </div>
       </section>
 
-      <section class="marquee-auto">
-        <div class="marquee-line">
-          <div class="marquee-content">
-            <span>Websites • Platforms • E commerce • Products • Systems •
-              Growth • Conversion • Performance • Scale • UX •</span>
-            <span>Websites • Platforms • E commerce • Products • Systems •
-              Growth • Conversion • Performance • Scale • UX •</span>
-          </div>
-        </div>
-      
-        <div class="marquee-line reverse">
-          <div class="marquee-content">
-            <span>Websites • Platforms • E commerce • Products • Systems •
-              Growth • Conversion • Performance • Scale • UX • </span>
-            <span>Websites • Platforms • E commerce • Products • Systems •
-              Growth • Conversion • Performance • Scale • UX • </span>
-          </div>
-        </div>
-      </section>
-
-      <section class="section section-final page-section" id="cta">
+           <section class="section section-final page-section" id="cta">
         <div class="container final-cta glass">
           <h2>Let’s build something that works</h2>
           <p class="final-cta__lead">
@@ -416,7 +403,7 @@
       src="contact-widget.js"
       defer
       data-telegram-url="https://t.me/"
-      data-api-url="http://127.0.0.1:3000"
+      data-api-same-origin="true"
     ></script>
   </body>
 </html>

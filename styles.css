@@ -2410,6 +2410,68 @@ body.nav-open {
   color: var(--text);
 }
 
+/* ---------- Web: блок «Selected work» / «Избранные проекты» — hover + ::after (scroll-in см. после глобального reveal) ---------- */
+.page-web #work .work-card {
+  position: relative;
+  z-index: 0;
+}
+
+.page-web #work .work-card::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: calc(var(--radius-lg) + 2px);
+  opacity: 0;
+  pointer-events: none;
+  z-index: -1;
+  background: linear-gradient(
+    130deg,
+    rgba(110, 231, 249, 0.22),
+    rgba(167, 139, 250, 0.18),
+    rgba(244, 114, 182, 0.14)
+  );
+  filter: blur(18px);
+  transform: scale(0.96);
+  transition: opacity 0.38s var(--ease-premium), transform 0.38s var(--ease-premium);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .page-web #work .work-card.hover-lift:hover {
+    transform: translateY(-5px) scale(1.005);
+    box-shadow:
+      0 14px 32px rgba(15, 23, 42, 0.1),
+      0 8px 20px -4px rgba(167, 139, 250, 0.12),
+      0 0 0 1px rgba(255, 255, 255, 0.9),
+      inset 0 1px 0 rgba(255, 255, 255, 0.72);
+    border-color: rgba(255, 255, 255, 0.94);
+  }
+
+  .page-web #work .work-card.hover-lift:hover::after {
+    opacity: 0.42;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-web main > section#work[data-work-cards-reveal] .work-card.glass {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .page-web main > section#work[data-work-cards-reveal] .work-grid > .work-card {
+    transition-delay: 0s !important;
+  }
+
+  .page-web #work .work-card::after {
+    display: none;
+  }
+
+  .page-web #work .work-card.hover-lift:hover {
+    transform: none;
+  }
+}
+
 .integrations-list {
   list-style: none;
   margin: 0;
@@ -3673,6 +3735,42 @@ main > section:not(.hero):not(.page-hero).section-inview .glass,
 main > section:not(.hero):not(.page-hero).section-inview .section-header {
   opacity: 1;
   transform: translate3d(0, 0, 0);
+}
+
+/*
+ * Selected work: класс .work-cards--visible вешает script.js.
+ * Без него глобальное `main > section.section-inview .glass { opacity:1 }` срабатывает
+ * одновременно с появлением секции и «съедает» видимый transition.
+ */
+.page-web main > section#work[data-work-cards-reveal] .work-card.glass {
+  transition:
+    opacity 0.72s var(--ease-premium),
+    transform 0.75s var(--ease-premium),
+    box-shadow 0.45s var(--ease-premium),
+    border-color 0.35s ease;
+}
+
+.page-web main > section#work[data-work-cards-reveal]:not(.work-cards--visible) .work-card.glass {
+  opacity: 0;
+  transform: translate3d(0, 22px, 0);
+}
+
+.page-web main > section#work[data-work-cards-reveal].work-cards--visible .work-card.glass {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.page-web main > section#work[data-work-cards-reveal].work-cards--visible .work-grid > .work-card:nth-child(1) {
+  transition-delay: 0s;
+}
+.page-web main > section#work[data-work-cards-reveal].work-cards--visible .work-grid > .work-card:nth-child(2) {
+  transition-delay: 0.14s;
+}
+.page-web main > section#work[data-work-cards-reveal].work-cards--visible .work-grid > .work-card:nth-child(3) {
+  transition-delay: 0.28s;
+}
+.page-web main > section#work[data-work-cards-reveal].work-cards--visible .work-grid > .work-card:nth-child(4) {
+  transition-delay: 0.42s;
 }
 
 /* Staggered grid reveals (fast, responsive steps) */
