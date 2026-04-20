@@ -503,6 +503,36 @@ button.btn.btn-glass {
   margin-top: 0.15rem;
 }
 
+.cw-chat__powered {
+  margin: 0.4rem 0 0;
+  padding: 0 0.15rem;
+  text-align: center;
+  font-size: 0.68rem;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  color: #94a3b8;
+}
+
+.cw-chat__powered-link {
+  color: #64748b;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(100, 116, 139, 0.28);
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.cw-chat__powered-link:hover {
+  color: #7c3aed;
+  border-color: rgba(167, 139, 250, 0.45);
+}
+
+.cw-chat__powered-link:focus-visible {
+  outline: 2px solid rgba(167, 139, 250, 0.45);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
 .cw-chat__send:disabled {
   opacity: 0.65;
   cursor: not-allowed;
@@ -549,10 +579,13 @@ button.btn.btn-glass {
   height: var(--cw-fab-size);
   padding: 0;
   border-radius: 50%;
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   color: #334155;
+  overflow: visible;
+  isolation: isolate;
   transition:
     transform 0.28s var(--cw-ease),
     box-shadow 0.28s var(--cw-ease);
@@ -567,6 +600,34 @@ button.btn.btn-glass {
   touch-action: manipulation;
 }
 
+.cw-fab__ping {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid rgba(167, 139, 250, 0.45);
+  pointer-events: none;
+  z-index: 0;
+  transform-origin: center center;
+  animation: cw-fab-ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes cw-fab-ping {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+}
+
+.cw-fab[aria-expanded="true"] .cw-fab__ping {
+  animation: none;
+  opacity: 0;
+}
+
 .cw-fab:focus {
   outline: none;
 }
@@ -577,6 +638,8 @@ button.btn.btn-glass {
 }
 
 .cw-fab__icon {
+  position: relative;
+  z-index: 1;
   display: flex;
   color: #1e293b;
 }
@@ -594,15 +657,18 @@ button.btn.btn-glass {
   box-shadow: 0 14px 36px rgba(167, 139, 250, 0.38);
 }
 
+/* только тень — без transform на кнопке, чтобы не конфликтовать с кольцом .cw-fab__ping */
 @keyframes cw-fab-breathe {
   0%,
   100% {
-    transform: translateY(0) scale(1);
-    box-shadow: 0 12px 32px rgba(15, 23, 42, 0.14);
+    box-shadow:
+      0 12px 32px rgba(15, 23, 42, 0.14),
+      inset 0 1px 0 rgba(255, 255, 255, 0.95);
   }
   50% {
-    transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 16px 38px rgba(167, 139, 250, 0.22);
+    box-shadow:
+      0 16px 38px rgba(167, 139, 250, 0.26),
+      inset 0 1px 0 rgba(255, 255, 255, 0.95);
   }
 }
 
@@ -624,6 +690,11 @@ button.btn.btn-glass {
 
 .cw--reduce-motion .cw-fab {
   animation: none !important;
+}
+
+.cw--reduce-motion .cw-fab__ping {
+  animation: none !important;
+  opacity: 0 !important;
 }
 
 .cw--reduce-motion .cw-chat,

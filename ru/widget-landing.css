@@ -307,18 +307,11 @@
   position: relative;
   width: 100%;
   max-width: 400px;
+  /* Статичный лёгкий наклон без keyframes: анимация transform на карточке давала пересчёт overflow
+     у .widget-hero__browser-page и мигание скроллбара у мини-чата (Chrome + preserve-3d). */
+  transform: translate3d(0, 0, 0) rotateX(2deg) rotateY(-3deg);
   transform-style: preserve-3d;
-  animation: widget-card-float 7s ease-in-out infinite;
-}
-
-@keyframes widget-card-float {
-  0%,
-  100% {
-    transform: translateY(0) rotateX(2deg) rotateY(-3deg);
-  }
-  50% {
-    transform: translateY(-12px) rotateX(0deg) rotateY(2deg);
-  }
+  backface-visibility: hidden;
 }
 
 .widget-hero__browser {
@@ -368,9 +361,11 @@
 
 .widget-hero__browser-page {
   position: relative;
-  min-height: 220px;
+  min-height: 228px;
   padding: 1rem 1rem 4.25rem;
+  box-sizing: border-box;
   background: linear-gradient(165deg, rgba(248, 250, 252, 0.95) 0%, rgba(241, 245, 249, 0.88) 100%);
+  overflow: hidden;
 }
 
 .widget-hero__skeleton {
@@ -385,7 +380,8 @@
   height: 8px;
   border-radius: 4px;
   background: linear-gradient(90deg, rgba(167, 139, 250, 0.12), rgba(110, 231, 249, 0.14));
-  animation: widget-sk-shimmer 2.8s ease-in-out infinite;
+  opacity: 0.88;
+  /* без opacity-keyframes — меньше лишних перерисовок внутри фиксированной по высоте зоны */
 }
 
 .widget-hero__sk-line--long {
@@ -398,16 +394,6 @@
 
 .widget-hero__sk-line:not(.widget-hero__sk-line--long):not(.widget-hero__sk-line--short) {
   width: 88%;
-}
-
-@keyframes widget-sk-shimmer {
-  0%,
-  100% {
-    opacity: 0.55;
-  }
-  50% {
-    opacity: 1;
-  }
 }
 
 .widget-hero__fab {
@@ -424,21 +410,7 @@
     0 2px 8px rgba(110, 231, 249, 0.35);
   display: grid;
   place-items: center;
-  animation: widget-fab-glow 3s ease-in-out infinite;
-}
-
-@keyframes widget-fab-glow {
-  0%,
-  100% {
-    box-shadow:
-      0 10px 28px rgba(167, 139, 250, 0.45),
-      0 2px 8px rgba(110, 231, 249, 0.35);
-  }
-  50% {
-    box-shadow:
-      0 14px 36px rgba(244, 114, 182, 0.35),
-      0 4px 14px rgba(167, 139, 250, 0.5);
-  }
+  /* без анимации box-shadow — иначе граница переполнения у родителя с overflow:hidden «плывёт» */
 }
 
 .widget-hero__fab-icon {
@@ -466,7 +438,10 @@
   inset: -6px;
   border-radius: 50%;
   border: 2px solid rgba(167, 139, 250, 0.45);
+  transform-origin: center center;
   animation: widget-fab-ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  pointer-events: none;
+  will-change: transform, opacity;
 }
 
 @keyframes widget-fab-ping {
@@ -484,24 +459,34 @@
   position: absolute;
   left: 0.65rem;
   right: 3.5rem;
-  bottom: 3.25rem;
+  /* над FAB: высота кнопки + отступы, без наложения на круглый FAB */
+  bottom: calc(0.85rem + 52px + 0.45rem);
   padding: 0.65rem 0.75rem;
   border-radius: 14px;
   text-align: left;
   font-size: 0.78rem;
   line-height: 1.45;
-  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.1);
-  animation: widget-mini-nudge 6s ease-in-out infinite;
+  box-sizing: border-box;
+  /* без .glass: backdrop-filter внутри анимированного transform давал субпиксельный reflow и «мигание» скроллбара */
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.97) 0%, rgba(248, 250, 252, 0.94) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow:
+    var(--shadow-soft),
+    0 12px 28px rgba(15, 23, 42, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.78);
+  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  max-width: calc(100% - 0.65rem - 3.5rem);
+  scrollbar-width: none;
 }
 
-@keyframes widget-mini-nudge {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-4px);
-  }
+.widget-hero__mini-chat::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
 }
 
 .widget-hero__mini-chat-top {
@@ -528,6 +513,8 @@
   padding: 0.45rem 0.55rem;
   border-radius: 10px;
   margin-bottom: 0.4rem;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .widget-hero__mini-row:last-child {
@@ -595,9 +582,42 @@ html:not(.reduce-ui-motion) body.site-ui-ready .widget-hero__viz {
 
   .widget-hero__viz {
     min-height: auto;
-    max-width: 22rem;
+    max-width: min(22rem, calc(100vw - 1.5rem));
+    width: 100%;
     margin: 0 auto;
     order: 2;
+    padding: 0 0.25rem;
+    box-sizing: border-box;
+  }
+
+  .widget-hero__card {
+    max-width: 100%;
+  }
+
+  .widget-hero__browser-page {
+    padding: 0.85rem 0.55rem 4.75rem;
+    min-height: 200px;
+  }
+
+  .widget-hero__mini-chat {
+    left: 0.45rem;
+    right: 0.45rem;
+    max-width: none;
+    bottom: calc(0.6rem + 46px + 0.45rem);
+    font-size: 0.72rem;
+    padding: 0.55rem 0.6rem;
+  }
+
+  .widget-hero__fab {
+    width: 46px;
+    height: 46px;
+    right: 0.55rem;
+    bottom: 0.55rem;
+  }
+
+  .widget-hero__fab-icon {
+    width: 20px;
+    height: 16px;
   }
 
   .widget-hero__copy {
@@ -640,7 +660,6 @@ html:not(.reduce-ui-motion) body.site-ui-ready .widget-hero__viz {
   .widget-hero__card,
   .widget-hero__fab,
   .widget-hero__fab-ping,
-  .widget-hero__mini-chat,
   .widget-hero__btn-shine,
   .widget-hero__sk-line,
   .widget-hero__kicker-dot {

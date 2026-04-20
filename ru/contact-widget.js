@@ -6,6 +6,8 @@
  * FAB → чат с ИИ (POST {apiUrl}/chat)
  *
  * data-api-url, data-api-key, data-agent-id, data-chat-welcome, data-lead-path
+ * data-cw-powered-by-url — ссылка под полем чата (например лендинг виджета)
+ * data-cw-powered-by-text — подпись (по умолчанию «Powered by D-Art»)
  */
 (function (global) {
   'use strict';
@@ -129,6 +131,10 @@
     if (welcome != null) out.chatWelcome = welcome;
     var lp = s.getAttribute('data-lead-path');
     if (lp != null && lp !== '') out.leadPath = lp;
+    var pbu = s.getAttribute('data-cw-powered-by-url');
+    if (pbu) out.poweredByUrl = pbu;
+    var pbt = s.getAttribute('data-cw-powered-by-text');
+    if (pbt != null && String(pbt).trim() !== '') out.poweredByText = String(pbt).trim();
     return out;
   }
 
@@ -636,10 +642,19 @@
       '<button type="button" class="btn btn-glass cw-chat__send">' +
       escapeHtml(labels.send) +
       '</button>' +
+      (cfg.poweredByUrl
+        ? '<p class="cw-chat__powered">' +
+          '<a href="' +
+          escapeAttr(cfg.poweredByUrl) +
+          '" target="_blank" rel="noopener noreferrer" class="cw-chat__powered-link">' +
+          escapeHtml(cfg.poweredByText || 'Powered by D-Art') +
+          '</a></p>'
+        : '') +
       '</div>' +
       '<button type="button" class="cw-fab glass" aria-label="' +
       escapeAttr(labels.fabLabel) +
       '" aria-expanded="false" aria-controls="cw-chat-panel" aria-haspopup="dialog">' +
+      '<span class="cw-fab__ping" aria-hidden="true"></span>' +
       '<span class="cw-fab__icon" aria-hidden="true">' +
       '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">' +
       '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>' +
@@ -879,7 +894,7 @@
     openLeadModal: openStartModal,
     openChatPanel: openChatPanel,
     closeAll: closeAll,
-    version: '3.1.0',
+    version: '3.3.0',
   };
 
   function boot() {

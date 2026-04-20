@@ -90,32 +90,7 @@
         </div>
       </section>
 
-      <section class="web3-tx-river" aria-hidden="true">
-        <div class="web3-tx-river__fade web3-tx-river__fade--left"></div>
-        <div class="web3-tx-river__fade web3-tx-river__fade--right"></div>
-        <div class="web3-tx-river__row">
-          <div class="web3-tx-river__track">
-            <span class="mono"
-              >подтверждено 0x7f2a…b91 · ERC-20 transfer · блок 19,284,102 · 12 подтверждений</span
-            >
-            <span class="mono"
-              >подтверждено 0x7f2a…b91 · ERC-20 transfer · блок 19,284,102 · 12 подтверждений</span
-            >
-          </div>
-        </div>
-        <div class="web3-tx-river__row web3-tx-river__row--b">
-          <div class="web3-tx-river__track">
-            <span class="mono"
-              >контракт 0x4d…e8 · верифицирован · solidity 0.8.23 · optimizer 200 runs</span
-            >
-            <span class="mono"
-              >контракт 0x4d…e8 · верифицирован · solidity 0.8.23 · optimizer 200 runs</span
-            >
-          </div>
-        </div>
-      </section>
-
-      <section class="web3-crypto-strip section section--compact">
+       <section class="web3-crypto-strip section section--compact">
         <div class="container">
           <p class="web3-crypto-strip__label">С какими сетями и активами работаем</p>
           <ul class="web3-crypto-strip__list" role="list">
@@ -413,17 +388,30 @@
     </main>
 
     <footer class="footer">
-      <div class="container footer-inner">
-        <p class="footer-cr">
-          <span class="footer-year">© 2026</span>
-          <span class="footer-name">D-Art</span>
-        </p>
-        <div class="footer-links">
-          <a href="index.html">Главная</a>
-          <a href="web-development.html">Web</a>
-          <a href="ai-development.html">AI</a>
+      <section class="web3-tx-river" aria-hidden="true">
+        <div class="web3-tx-river__fade web3-tx-river__fade--left"></div>
+        <div class="web3-tx-river__fade web3-tx-river__fade--right"></div>
+        <div class="web3-tx-river__row">
+          <div class="web3-tx-river__track">
+            <span class="mono"
+              >подтверждено 0x7f2a…b91 · ERC-20 transfer · блок 19,284,102 · 12 подтверждений</span
+            >
+            <span class="mono"
+              >подтверждено 0x7f2a…b91 · ERC-20 transfer · блок 19,284,102 · 12 подтверждений</span
+            >
+          </div>
         </div>
-      </div>
+        <div class="web3-tx-river__row web3-tx-river__row--b">
+          <div class="web3-tx-river__track">
+            <span class="mono"
+              >контракт 0x4d…e8 · верифицирован · solidity 0.8.23 · optimizer 200 runs</span
+            >
+            <span class="mono"
+              >контракт 0x4d…e8 · верифицирован · solidity 0.8.23 · optimizer 200 runs</span
+            >
+          </div>
+        </div>
+      </section>
     </footer>
 
     <script src="script.js"></script>
@@ -432,6 +420,8 @@
       defer
       data-telegram-url="https://t.me/"
       data-api-same-origin="true"
+      data-cw-powered-by-url="https://d-art.space/ru/widget.html"
+      data-cw-powered-by-text="Powered by D-Art"
     ></script>
   </body>
 </html>
